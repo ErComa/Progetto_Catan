@@ -69,3 +69,5 @@ public:
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
 };
+
+coso* board[11][21];

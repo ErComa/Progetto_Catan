@@ -8,28 +8,28 @@ const int righe = 11;
 const int colonne = 21;
 
 char griglia[righe][colonne] = {
-		{'o','o','o','o','v','s','v','g','v','s','v','g','v','s','v','g','v','o','o','o','o'},
+		{'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
+		{'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
+		{'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
+		{'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
+		{'o','o','o','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o','o','o'},
 		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
-		{'o','o','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o'},
-		{'o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o'},
-		{'v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v'},
-		{'l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l'},
-		{'v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v'},
-		{'o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o'},
-		{'o','o','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','o','o'},
-		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
-		{'o','o','o','o','v','g','v','s','v','g','v','s','v','g','v','s','v','o','o','o','o'},
+		{'o','o','o','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','o','o','o'},
+		{'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
+		{'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
+		{'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
+		{'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
 };
 /*
 biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
 */
 
-int biomi[5][10] = {
-		{-1, 0, 0, 0, -1},
-		{0, 0, 0, 0, -1},
-		{0, 0, 0, 0, 0},
-		{0, 0, 0, 0, -1},
-		{-1, 0, 0, 0, -1}
+int griglia[5][10] = {
+	   {-1,-1,0,-1,0,-1,0,-1,-1,-1},
+	   {-1,0,-1,0,-1,0,-1,0,-1,-1},
+	   {0,-1,0,-1,0,-1,0,-1,0,-1},
+	   {-1,0,-1,0,-1,0,-1,0,-1,-1},
+	   {-1,-1,0,-1,0,-1,0,-1,-1,-1},
 };
 class bioma {
 private:
@@ -61,13 +61,43 @@ public:
 
 class coso {
 protected:
-	char stato;
-	int colore;//player
+	char stato;// tah se e villaggio o casa o boh
+	int colore;// opacita pixel perche si
 public:
-	coso(char a) : stato(a), colore(0) {}
+	coso(char a, int b) : stato(a), colore(b) {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
 };
 
 coso* board[11][21];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+board completa da implementare se ho tempo
+char griglia[righe][colonne] = {
+		{'o','o','o','o','v','s','v','g','v','s','v','g','v','s','v','g','v','o','o','o','o'},
+		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
+		{'o','o','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o'},
+		{'o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o'},
+		{'v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v'},
+		{'l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l'},
+		{'v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v'},
+		{'o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o'},
+		{'o','o','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','o','o'},
+		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
+		{'o','o','o','o','v','g','v','s','v','g','v','s','v','g','v','s','v','o','o','o','o'},
+};
+*/

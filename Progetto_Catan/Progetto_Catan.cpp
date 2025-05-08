@@ -5,6 +5,12 @@
 #include "header.h"
 using namespace std;
 sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "non so a cosa serve sta stringa ma se la tolgo non compila quindi la lasciamo qua");
+/*
+note progetto:
+2 giocatori
+rimossi vertici e spigoli esterni per semplificare rappresentazione
+*/
+
 
 //main cicle
 int main()

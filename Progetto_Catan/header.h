@@ -22,6 +22,12 @@ char griglia[righe][colonne] = {
 };
 /*
 biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
+1: legno verdescuro
+2: mattoni arancione
+3: LE PECORE verdechiaro
+4: iron grigio
+5: grano giallo qualcosa del genere 
+6: deserto
 */
 
 int griglia[5][10] = {

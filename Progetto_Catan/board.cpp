@@ -4,6 +4,41 @@
 #include "SFML\System.hpp"
 #include "header.h"
 
+void inizializzazione_biomi() {
+    int counter, a;
+    counter = 0;
+    for (int i = 0; i < righe; ++i) {
+        for (int j = 0; j < colonne; ++j) {
+            a = 255 - counter;
+            switch (griglia[i][j]) {
+            case '0':
+                board[i][j] = nullptr;
+                break;
+            case 'l':
+                coso * test = new coso('l', a);
+                board[i][j] = test;
+                counter++;
+                break;
+            case 's':
+                coso * test = new coso('s', a);
+                board[i][j] = test;
+                counter++;
+                break;
+            case 'g':
+                coso * test = new coso('g', a);
+                board[i][j] = test;
+                counter++;
+                break;
+            case 'v':
+                coso * test = new coso('l', a);//identificatore vertice da fare
+                board[i][j] = test;
+                break;
+            }
+        }
+        std::cout << "board inizializzata";
+    }
+}
+
 void inizializzazione_board() {
     int a;
     for (int i = 0; i < righe; ++i) {

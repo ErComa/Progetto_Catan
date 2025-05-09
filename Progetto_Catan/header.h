@@ -40,9 +40,10 @@ int griglia[5][10] = {
 class bioma {
 private:
 	int type;
-	int risorsa;
+	int numero;
+	bool assegnata;//per inizializzazione
 public:
-	bioma(int a, int b): type(a), risorsa(b){}
+	bioma(int a, int b): type(a), numero(b),assegnata(0){}
 	int get_type() { return type; }
 	int produzione_risorsa();
 };
@@ -75,9 +76,7 @@ public:
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
 };
-
 coso* board[11][21];
-
 
 
 

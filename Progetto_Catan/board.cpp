@@ -3,19 +3,60 @@
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
 #include "header.h"
+#include <cstdlib>
+#include <ctime>  
+
+void assegnazione_numeri() {
+    int array[19] = {2,2,3,3,4,4,5,5,6,6,9,9,8,8,10,10,11,11,12 };
+    for (int i = 0;i < 19;i++) {
+        numero* test = new numero(array[i]);
+        numeri[i] = test;
+    }
+}
+
+//identificatore biomi: canale alfa 210 a scendere
+//tipo numero colore
+void scegli_bioma(int i, int j, int counter) {
+    int a = 0;
+    while (a == 0) {
+        int numerocasuale = std::rand() % 19;
+        if (numeri[numerocasuale]->assegnato != 1) {
+            bioma * test = new bioma(tipo[numerocasuale], numeri[numerocasuale]->num,colori[numerocasuale]);
+            mappa[i][j] = test;
+            numeri[numerocasuale]->assegnato = 1;
+        }
+    }
+}
 
 void inizializzazione_biomi() {
-    int counter, a;
+    std::srand(std::time(nullptr));
+    int counter = 0;
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (griglia[i][j] == 0) {
+                scegli_bioma(i, j, counter);
+                counter++;
+           }
+            else {
+                mappa[i][j] = nullptr;
+            }
+            }
+        }
+
+}
+
+void inizializzazione_board() {
+    int a, counter;
     counter = 0;
     for (int i = 0; i < righe; ++i) {
         for (int j = 0; j < colonne; ++j) {
-            a = 255 - counter;
+            a = 254 - counter;
             switch (griglia[i][j]) {
             case '0':
                 board[i][j] = nullptr;
                 break;
             case 'l':
-                coso * test = new coso('l', a);
+                coso * test = new coso('l',a);
                 board[i][j] = test;
                 counter++;
                 break;
@@ -30,38 +71,7 @@ void inizializzazione_biomi() {
                 counter++;
                 break;
             case 'v':
-                coso * test = new coso('l', a);//identificatore vertice da fare
-                board[i][j] = test;
-                break;
-            }
-        }
-        std::cout << "board inizializzata";
-    }
-}
-
-void inizializzazione_board() {
-    int a;
-    for (int i = 0; i < righe; ++i) {
-        for (int j = 0; j < colonne; ++j) {
-            a = 100 - i;
-            switch (griglia[i][j]) {
-            case '0':
-                board[i][j] = nullptr;
-                break;
-            case 'l':
-                coso * test = new coso('l',i);
-                board[i][j] = test;
-                break;
-            case 's':
-                coso * test = new coso('s', i);
-                board[i][j] = test;
-                break;
-            case 'g':
-                coso * test = new coso('g', i);
-                board[i][j] = test;
-                break;
-            case 'v':
-                coso * test = new coso('l', i);
+                coso * test = new coso('l', i);//identificatore vertice da fare
                 board[i][j] = test;
                 break;
             }

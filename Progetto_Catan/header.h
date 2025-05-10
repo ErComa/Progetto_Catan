@@ -20,6 +20,8 @@ char griglia[righe][colonne] = {
 		{'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
 		{'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
 };
+int colori[19] = {210,209,208,207,206,205,204,203,202,201,200,199,198,197,196,195,194,193,192};
+int tipo[19] = { };
 /*
 biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
 1: legno verdescuro
@@ -37,13 +39,14 @@ int griglia[5][10] = {
 	   {-1,0,-1,0,-1,0,-1,0,-1,-1},
 	   {-1,-1,0,-1,0,-1,0,-1,-1,-1},
 };
+
 class bioma {
 private:
 	int type;
 	int numero;
-	bool assegnata;//per inizializzazione
+	int colore;
 public:
-	bioma(int a, int b): type(a), numero(b),assegnata(0){}
+	bioma(int a, int b, int c): type(a), numero(b),colore(c){}
 	int get_type() { return type; }
 	int produzione_risorsa();
 };
@@ -76,7 +79,17 @@ public:
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
 };
+
+class numero {
+public:
+	numero(int a) : num(a), assegnato(0){}
+	int num;
+	bool assegnato;
+};
+
 coso* board[11][21];
+bioma* mappa[5][10];
+numero* numeri[19];
 
 
 

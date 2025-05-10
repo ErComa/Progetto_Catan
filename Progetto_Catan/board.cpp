@@ -17,13 +17,14 @@ void assegnazione_numeri() {
 //identificatore biomi: canale alfa 210 a scendere
 //tipo numero colore
 void scegli_bioma(int i, int j, int counter) {
-    int a = 0;
+    bool a = 0;
     while (a == 0) {
         int numerocasuale = std::rand() % 19;
         if (numeri[numerocasuale]->assegnato != 1) {
-            bioma * test = new bioma(tipo[numerocasuale], numeri[numerocasuale]->num,colori[numerocasuale]);
+            bioma * test = new bioma(tipo[counter], numeri[numerocasuale]->num,colori[counter]);
             mappa[i][j] = test;
             numeri[numerocasuale]->assegnato = 1;
+            a = true;
         }
     }
 }
@@ -71,7 +72,7 @@ void inizializzazione_board() {
                 counter++;
                 break;
             case 'v':
-                coso * test = new coso('l', i);//identificatore vertice da fare
+                coso * test = new coso('l', i);//identificatore verticei: 190 in giu
                 board[i][j] = test;
                 break;
             }
@@ -79,13 +80,7 @@ void inizializzazione_board() {
         std::cout << "board inizializzata";
     }
 }
-/*
-posizione stampa esagono 1: 190,83
-delta x = 141
 
-per file sfasate:
-120,205
-*/
 void print() {
     sf::Texture arancione;
     arancione.loadFromFile("./media/arancione.png");

@@ -21,15 +21,15 @@ char griglia[righe][colonne] = {
 		{'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
 };
 int colori[19] = {210,209,208,207,206,205,204,203,202,201,200,199,198,197,196,195,194,193,192};
-int tipo[19] = { };
+int tipo[19] = {4,    3,   1,   5,  2,  3,  2,  5,  1,  6,  1,  4,  1,  4,  5,  3,  2,  5,  3};
 /*
 biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
-1: legno verdescuro
-2: mattoni arancione
-3: LE PECORE verdechiaro
-4: iron grigio
-5: grano giallo qualcosa del genere 
-6: deserto
+1: legno verdescuro   
+2: mattoni arancione  
+3: LE PECORE verdechiaro 
+4: iron grigio 
+5: grano giallo qualcosa del genere  
+6: deserto 
 */
 
 int griglia[5][10] = {

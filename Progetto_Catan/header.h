@@ -40,35 +40,6 @@ int griglia[5][10] = {
 	   {-1,-1,0,-1,0,-1,0,-1,-1,-1},
 };
 
-class bioma {
-private:
-	int type;
-	int numero;
-	int colore;
-public:
-	bioma(int a, int b, int c): type(a), numero(b),colore(c){}
-	int get_type() { return type; }
-	int produzione_risorsa();
-};
-
-class utente {
-private:
-	int villaggi;
-	int citta;
-	int strade;
-	int risorse[5];
-public:
-	utente();
-	int get_villaggi() { return villaggi; }
-	int get_citta() { return citta; }
-	int get_strade() { return strade; }
-	int get_risorse(int a) { return risorse[a]; }
-	bool piazza_villaggio();
-	bool piazza_strada();
-	bool piazza_citta();
-	void aggiungi_risorsa(int);
-};
-
 class coso {
 protected:
 	char stato;// tah se e villaggio o casa o boh
@@ -88,7 +59,6 @@ public:
 };
 
 coso* board[11][21];
-bioma* mappa[5][10];
 numero* numeri[19];
 
 

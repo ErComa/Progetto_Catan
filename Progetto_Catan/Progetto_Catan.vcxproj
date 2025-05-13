@@ -135,11 +135,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="bioma.cpp" />
     <ClCompile Include="board.cpp" />
     <ClCompile Include="Progetto_Catan.cpp" />
+    <ClCompile Include="utente.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bioma.h" />
     <ClInclude Include="header.h" />
+    <ClInclude Include="utente.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

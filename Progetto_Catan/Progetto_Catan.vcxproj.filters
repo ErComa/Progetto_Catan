@@ -21,9 +21,21 @@
     <ClCompile Include="board.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
+    <ClCompile Include="utente.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
+    <ClCompile Include="bioma.cpp">
+      <Filter>File di origine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="header.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="utente.h">
+      <Filter>File di origine</Filter>
+    </ClInclude>
+    <ClInclude Include="bioma.h">
       <Filter>File di origine</Filter>
     </ClInclude>
   </ItemGroup>

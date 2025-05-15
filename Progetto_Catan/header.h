@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "SFML\Window.hpp"
@@ -7,44 +8,22 @@
 const int righe = 11;
 const int colonne = 21;
 
-char griglia[righe][colonne] = {
-		{'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
-		{'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
-		{'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
-		{'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
-		{'o','o','o','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o','o','o'},
-		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
-		{'o','o','o','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','o','o','o'},
-		{'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
-		{'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
-		{'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
-		{'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
-};
-int colori[19] = {210,209,208,207,206,205,204,203,202,201,200,199,198,197,196,195,194,193,192};
-int tipo[19] = {4,    3,   1,   5,  2,  3,  2,  5,  1,  6,  1,  4,  1,  4,  5,  3,  2,  5,  3};
-/*
-biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
-1: legno verdescuro   
-2: mattoni arancione  
-3: LE PECORE verdechiaro 
-4: iron grigio 
-5: grano giallo qualcosa del genere  
-6: deserto 
-*/
+void inizializzazione_board();
+void inizializzazione_biomi();
+void assegnazione_numeri();
 
-int griglia[5][10] = {
-	   {-1,-1,0,-1,0,-1,0,-1,-1,-1},
-	   {-1,0,-1,0,-1,0,-1,0,-1,-1},
-	   {0,-1,0,-1,0,-1,0,-1,0,-1},
-	   {-1,0,-1,0,-1,0,-1,0,-1,-1},
-	   {-1,-1,0,-1,0,-1,0,-1,-1,-1},
-};
+extern char griglia[righe][colonne];
+extern int colori[19];
+extern int tipo[19];
+extern int griglia_biomi[5][10];
 
 class coso {
 protected:
+	//char stato;// tah se e villaggio o casa o boh
+	//int colore;// opacita pixel perche si
+public:
 	char stato;// tah se e villaggio o casa o boh
 	int colore;// opacita pixel perche si
-public:
 	coso(char a, int b) : stato(a), colore(b) {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
@@ -58,8 +37,8 @@ public:
 	bool assegnato;
 };
 
-coso* board[11][21];
-numero* numeri[19];
+extern coso* board[11][21];
+extern numero* numeri[19];
 
 
 

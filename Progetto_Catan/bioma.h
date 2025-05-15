@@ -15,4 +15,16 @@ public:
 	int produzione_risorsa();
 };
 
-bioma* mappa[5][10];
+extern bioma* mappa[5][10];
+
+
+/*
+biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
+1: legno verdescuro
+2: mattoni arancione
+3: LE PECORE verdechiaro
+4: iron grigio
+5: grano giallo qualcosa del genere
+6: deserto
+*/
+

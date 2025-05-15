@@ -7,6 +7,31 @@
 #include "utente.h"
 #include <cstdlib>
 #include <ctime>  
+bioma* mappa[5][10];
+coso* board[11][21];
+numero* numeri[19];
+char griglia[righe][colonne] = {
+        {'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
+        {'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
+        {'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
+        {'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
+        {'o','o','o','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o','o','o'},
+        {'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
+        {'o','o','o','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','o','o','o'},
+        {'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
+        {'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
+        {'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
+        {'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
+};
+int colori[19] = { 210,209,208,207,206,205,204,203,202,201,200,199,198,197,196,195,194,193,192 };
+int tipo[19] = { 4,    3,   1,   5,  2,  3,  2,  5,  1,  6,  1,  4,  1,  4,  5,  3,  2,  5,  3 };
+int griglia_biomi[5][10] = {
+       {-1,-1,0,-1,0,-1,0,-1,-1,-1},
+       {-1,0,-1,0,-1,0,-1,0,-1,-1},
+       {0,-1,0,-1,0,-1,0,-1,0,-1},
+       {-1,0,-1,0,-1,0,-1,0,-1,-1},
+       {-1,-1,0,-1,0,-1,0,-1,-1,-1},
+};
 
 void assegnazione_numeri() {
     int array[19] = {2,2,3,3,4,4,5,5,6,6,9,9,8,8,10,10,11,11,12 };
@@ -36,7 +61,7 @@ void inizializzazione_biomi() {
     int counter = 0;
     for (int i = 0; i < 5; ++i) {
         for (int j = 0; j < 10; ++j) {
-            if (griglia[i][j] == 0) {
+            if (griglia_biomi[i][j] == 0) {
                 scegli_bioma(i, j, counter);
                 counter++;
            }
@@ -49,38 +74,38 @@ void inizializzazione_biomi() {
 }
 
 void inizializzazione_board() {
-    int a, counter;
+    int a, counter, vertici, b;
     counter = 0;
+    vertici = 0;
+    
     for (int i = 0; i < righe; ++i) {
         for (int j = 0; j < colonne; ++j) {
             a = 254 - counter;
+            b = 190 - vertici;
             switch (griglia[i][j]) {
             case '0':
                 board[i][j] = nullptr;
                 break;
             case 'l':
-                coso * test = new coso('l',a);
-                board[i][j] = test;
+                board[i][j] = new coso('l', a);
                 counter++;
                 break;
             case 's':
-                coso * test = new coso('s', a);
-                board[i][j] = test;
+                board[i][j] = new coso('s', a);
                 counter++;
                 break;
             case 'g':
-                coso * test = new coso('g', a);
-                board[i][j] = test;
+                board[i][j] = new coso('g', a);
                 counter++;
                 break;
-            case 'v':
-                coso * test = new coso('l', i);//identificatore verticei: 190 in giu
-                board[i][j] = test;
+            case 'v'://identificatore verticei: 190 in giu
+                board[i][j] = new coso('l', b);
+                vertici++;
                 break;
             }
         }
-        std::cout << "board inizializzata";
     }
+    std::cout << "board inizializzata"<<std::endl;
 }
 
 void print() {

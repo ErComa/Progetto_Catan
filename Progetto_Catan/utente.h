@@ -5,7 +5,7 @@
 #include "SFML\System.hpp"
 
 
-class utente {
+/*class utente {
 private:
 	int villaggi;
 	int citta;
@@ -22,3 +22,4 @@ public:
 	bool piazza_citta();
 	void aggiungi_risorsa(int);
 };
+*/

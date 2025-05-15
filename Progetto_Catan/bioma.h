@@ -13,6 +13,7 @@ public:
 	bioma(int, int, int);
 	int get_type();
 	int produzione_risorsa();
+	int get_colore() { return colore; }
 };
 
 extern bioma* mappa[5][10];

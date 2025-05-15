@@ -11,6 +11,7 @@ const int colonne = 21;
 void inizializzazione_board();
 void inizializzazione_biomi();
 void assegnazione_numeri();
+void print(sf::RenderWindow& window);
 
 extern char griglia[righe][colonne];
 extern int colori[19];
@@ -19,15 +20,15 @@ extern int griglia_biomi[5][10];
 
 class coso {
 protected:
-	//char stato;// tah se e villaggio o casa o boh
-	//int colore;// opacita pixel perche si
-public:
 	char stato;// tah se e villaggio o casa o boh
 	int colore;// opacita pixel perche si
-	coso(char a, int b) : stato(a), colore(b) {}
+	char player;
+public:
+	coso(char a, int b) : stato(a), colore(b), player('r') {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
+	char get_player() { return player; }
 };
 
 class numero {

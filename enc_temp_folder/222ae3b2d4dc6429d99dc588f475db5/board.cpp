@@ -108,9 +108,6 @@ void inizializzazione_board() {
 }
 
 void print(sf::RenderWindow& window) {
-    int a, b;
-    a = 0;
-    b = 0;
     // Caricamento delle texture
     sf::Texture blu_giu_texture;
     blu_giu_texture.loadFromFile("./media/blu_giu.png");

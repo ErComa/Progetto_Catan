@@ -3,6 +3,7 @@
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
 #include "header.h"
+#include "bioma.h"
 using namespace std;
 sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "non so a cosa serve sta stringa ma se la tolgo non compila quindi la lasciamo qua");
 
@@ -11,7 +12,7 @@ void stampaColori() {
     for (int i = 0; i < 11; ++i) {
         for (int j = 0; j < 21; ++j) {
             if (board[i][j] != nullptr)
-                cout << board[i][j]->colore;
+                cout << board[i][j]->get_colore();
             else
                 cout << "..."; // Usa "." o "" per le celle vuote
         }
@@ -19,13 +20,23 @@ void stampaColori() {
     }
 }
 
+void stampaColoriMappa() {
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (mappa[i][j] != nullptr)
+                cout << mappa[i][j]->get_colore() << " ";
+            else
+                cout << ". ";
+        }
+        cout << endl;
+    }
+}
+  
 int main()
 {
     int x, y;
     sf::Texture texture;
-    if (!texture.loadFromFile("./media/board.png")) {
-        return -1; // Errore nel caricare la texture
-    }
+    texture.loadFromFile("./media/board.png");
     sf::Image image;
     image.loadFromFile("./media/board.png");
     sf::Sprite sprite(texture);
@@ -33,6 +44,15 @@ int main()
     inizializzazione_board();
     inizializzazione_biomi();
     stampaColori();
+    stampaColoriMappa();
+
+
+
+    sf::Texture rosso_su_texture;
+    rosso_su_texture.loadFromFile("./media/rosso_su.png");
+    sf::Sprite rosso_su_sprite(rosso_su_texture);
+
+
 
     while (window.isOpen())
     {
@@ -50,7 +70,7 @@ int main()
                     << "A=" << static_cast<int>(pixelColor.a) << "\n";
             }
         }
-
+        print(window);
         window.clear();
         window.draw(sprite);
         window.display();

@@ -29,6 +29,8 @@ public:
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
 	char get_player() { return player; }
+	void set_player(char a) { player = a; }
+	void set_stato(char a) { stato = a; }
 };
 
 class numero {

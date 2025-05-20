@@ -31,26 +31,18 @@ void stampaColoriMappa() {
         cout << endl;
     }
 }
-  
+
 int main()
 {
     int x, y;
-    sf::Texture texture;
-    texture.loadFromFile("./media/board.png");
-    sf::Image image;
-    image.loadFromFile("./media/board.png");
-    sf::Sprite sprite(texture);
+
     assegnazione_numeri();
     inizializzazione_board();
     inizializzazione_biomi();
     stampaColori();
     stampaColoriMappa();
-
-
-
-    sf::Texture rosso_su_texture;
-    rosso_su_texture.loadFromFile("./media/rosso_su.png");
-    sf::Sprite rosso_su_sprite(rosso_su_texture);
+    sf::Image image;
+    image.loadFromFile("./media/board.png");
 
 
 
@@ -66,13 +58,11 @@ int main()
                 y = localPosition.y;
                 sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
 
-                std::cout << "Pixel a (" << x << ", " << y << ")"
-                    << "A=" << static_cast<int>(pixelColor.a) << "\n";
+                /*std::cout << "Pixel a (" << x << ", " << y << ")"
+                    << "A=" << static_cast<int>(pixelColor.a) << "\n";*/
             }
         }
-        print(window);
         window.clear();
-        window.draw(sprite);
-        window.display();
+        print(window);
     }
 }

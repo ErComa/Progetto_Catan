@@ -19,7 +19,7 @@ char griglia[righe][colonne] = {
         {'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
         {'o','o','o','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','o','o','o'},
         {'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
-        {'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
+        {'o','o','o','o','o','s','v','g','v','s','v','g','v','s','v','g','o','o','o','o','o'},
         {'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
         {'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
 };
@@ -34,7 +34,7 @@ int griglia_biomi[5][10] = {
 };
 
 void assegnazione_numeri() {
-    int array[19] = {2,2,3,3,4,4,5,5,6,6,9,9,8,8,10,10,11,11,12 };
+    int array[19] = { 2,2,3,3,4,4,5,5,6,6,9,9,8,8,10,10,11,11,12 };
     for (int i = 0;i < 19;i++) {
         numero* test = new numero(array[i]);
         numeri[i] = test;
@@ -48,7 +48,7 @@ void scegli_bioma(int i, int j, int counter) {
     while (a == 0) {
         int numerocasuale = std::rand() % 19;
         if (numeri[numerocasuale]->assegnato != 1) {
-            bioma * test = new bioma(tipo[counter], numeri[numerocasuale]->num,colori[counter]);
+            bioma* test = new bioma(tipo[counter], numeri[numerocasuale]->num, colori[counter]);
             mappa[i][j] = test;
             numeri[numerocasuale]->assegnato = 1;
             a = true;
@@ -64,19 +64,19 @@ void inizializzazione_biomi() {
             if (griglia_biomi[i][j] == 0) {
                 scegli_bioma(i, j, counter);
                 counter++;
-           }
+            }
             else {
                 mappa[i][j] = nullptr;
             }
-            }
         }
+    }
 }
 
 void inizializzazione_board() {
     int a, counter, vertici, b;
     counter = 0;
     vertici = 0;
-    
+
     for (int i = 0; i < righe; ++i) {
         for (int j = 0; j < colonne; ++j) {
             a = 254 - counter;
@@ -98,17 +98,17 @@ void inizializzazione_board() {
                 counter++;
                 break;
             case 'v'://identificatore verticei: 190 in giu
-                board[i][j] = new coso('l', b);
+                board[i][j] = new coso('v', b);
                 vertici++;
                 break;
             }
         }
     }
-    std::cout << "board inizializzata"<<std::endl;
+    std::cout << "board inizializzata" << std::endl;
 }
 
 void print(sf::RenderWindow& window) {
-    int a, b;
+    int a, b, vertici;
     a = 0;
     b = 0;
     // Caricamento delle texture
@@ -134,39 +134,63 @@ void print(sf::RenderWindow& window) {
     sf::Sprite rosso_su_sprite(rosso_su_texture);
     sf::Sprite rosso_verticale_sprite(rosso_verticale_texture);
     sf::Sprite board_sprite(board_texture);
-	//190 83, deltax 142, deltay 123
-    //332 206
+    //deltax 68, deltay 123
+    //44 318
+    //board[4][3]->set_player('r');
+    window.draw(board_sprite);
     for (int i = 0; i < righe; ++i) {
+		vertici = 0;
+        if (i == 2 || i == 8) { vertici++; }
         for (int j = 0; j < colonne; ++j) {
-            if(board[i][j]!= nullptr)
+         if (board[i][j] != nullptr){if (board[i][j]->get_stato() == 'v') { vertici++; }}
+           // if (i <= 4) { a = 318 - ((4 - i) * 123); }
+          // else { a = 318 + ((i - 4) * 123); }
+         switch (i) {
+         case 2:
+             a = (318 - 123);
+			 break;
+		 case 4:
+			 a = 318;
+			 break;
+		 case 6:
+             a = (318 + 123);
+			 break;
+         case 8:
+             a = (318 + 246);
+             break;
+
+;         }
+            b = 44 + ((j - 2-vertici) * 71);
+            
+            if (board[i][j] != nullptr)
             {
                 switch (board[i][j]->get_stato()) {
-                case 'l':
-					switch (board[i][j]->get_player()) {
+               /* case 'l':
+                    switch (board[i][j]->get_player()) {
                     case 'o':
-						break;
-					case 'b':
-						blu_verticale_sprite.setPosition(sf::Vector2f(190 + (j * 142), 83 + (i * 123)));
-						window.draw(blu_verticale_sprite);
-						break;
-					case 'r':
-						rosso_verticale_sprite.setPosition(sf::Vector2f(190 + (j * 142), 83 + (i * 123)));
-						window.draw(rosso_verticale_sprite);
-						break;
-					}
-					break;
-				
+                        break;
+                    case 'b':
+                        blu_verticale_sprite.setPosition(sf::Vector2f(b, a));
+                        window.draw(blu_verticale_sprite);
+                        break;
+                    case 'r':
+                        rosso_verticale_sprite.setPosition(sf::Vector2f(b, a));
+                        window.draw(rosso_verticale_sprite);
+                        break;
+                    }
                     break;
+
+                    break;*/
                 case 's':
                     switch (board[i][j]->get_player()) {
                     case 'o':
                         break;
                     case 'b':
-                        blu_su_sprite.setPosition(sf::Vector2f(190 + (j * 142), 83 + (i * 123)));
+                        blu_su_sprite.setPosition(sf::Vector2f(b, a));
                         window.draw(blu_su_sprite);
                         break;
                     case 'r':
-                        rosso_su_sprite.setPosition(sf::Vector2f(190 + (j * 142), 83 + (i * 123)));
+                        rosso_su_sprite.setPosition(sf::Vector2f(b, a));
                         window.draw(rosso_su_sprite);
                         break;
                     }
@@ -177,11 +201,11 @@ void print(sf::RenderWindow& window) {
                     case 'o':
                         break;
                     case 'b':
-                        blu_giu_sprite.setPosition(sf::Vector2f(190 + (j * 142), 83 + (i * 123)));
+                        blu_giu_sprite.setPosition(sf::Vector2f(b, a));
                         window.draw(blu_giu_sprite);
                         break;
                     case 'r':
-                        rosso_giu_sprite.setPosition(sf::Vector2f(190 + (j * 142), 83 + (i * 123)));
+                        rosso_giu_sprite.setPosition(sf::Vector2f(b, a));
                         window.draw(rosso_giu_sprite);
                         break;
                     }

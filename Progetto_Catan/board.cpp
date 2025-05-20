@@ -136,7 +136,7 @@ void print(sf::RenderWindow& window) {
     sf::Sprite board_sprite(board_texture);
     //deltax 68, deltay 123
     //44 318
-    board[5][16]->set_player('r');
+    board[3][6]->set_player('r');
     window.draw(board_sprite);
     for (int i = 0; i < righe; ++i) {
 		vertici = 0;
@@ -144,7 +144,7 @@ void print(sf::RenderWindow& window) {
         if (i == 2 || i == 8) { vertici++; }
         for (int j = 0; j < colonne; ++j) {
          if (board[i][j] != nullptr){if (board[i][j]->get_stato() == 'v') { vertici++; }}
-         if (board[i][j] != nullptr) { lati++;  std::cout<<"controllo "<<i<<" " << j << " " << lati << std::endl;
+         if (board[i][j] == nullptr) { lati++;  std::cout<<"controllo "<<i<<" " << j << " " << lati << std::endl;
          }
          switch (i) {
          case 1:
@@ -180,7 +180,7 @@ void print(sf::RenderWindow& window) {
             {
                 switch (board[i][j]->get_stato()) {
                case 'l':
-                   b = (181 + ((j - 5 - lati) * 141));
+                   b = (181 + ((j - lati) * 141));
 				   
                     switch (board[i][j]->get_player()) {
                     case 'o':

@@ -108,7 +108,7 @@ void inizializzazione_board() {
 }
 
 void print(sf::RenderWindow& window) {
-    int a, b, vertici;
+    int a, b, vertici, lati;
     a = 0;
     b = 0;
     // Caricamento delle texture
@@ -136,36 +136,52 @@ void print(sf::RenderWindow& window) {
     sf::Sprite board_sprite(board_texture);
     //deltax 68, deltay 123
     //44 318
-    //board[4][3]->set_player('r');
+    board[5][16]->set_player('r');
     window.draw(board_sprite);
     for (int i = 0; i < righe; ++i) {
 		vertici = 0;
+        lati = 0;
         if (i == 2 || i == 8) { vertici++; }
         for (int j = 0; j < colonne; ++j) {
          if (board[i][j] != nullptr){if (board[i][j]->get_stato() == 'v') { vertici++; }}
-           // if (i <= 4) { a = 318 - ((4 - i) * 123); }
-          // else { a = 318 + ((i - 4) * 123); }
+         if (board[i][j] != nullptr) { lati++;  std::cout<<"controllo "<<i<<" " << j << " " << lati << std::endl;
+         }
          switch (i) {
+         case 1:
+			 a = 122;
+		 break;
          case 2:
              a = (318 - 123);
 			 break;
 		 case 4:
 			 a = 318;
 			 break;
+		 case 3:
+			 a = 240;
 		 case 6:
              a = (318 + 123);
+			 break;
+		 case 5:
+			 a = 360;
 			 break;
          case 8:
              a = (318 + 246);
              break;
-
+		 case 7:
+			 a = 483;
+			 break;
+         case 9:
+             a = 605;
+             break;
 ;         }
             b = 44 + ((j - 2-vertici) * 71);
             
             if (board[i][j] != nullptr)
             {
                 switch (board[i][j]->get_stato()) {
-               /* case 'l':
+               case 'l':
+                   b = (181 + ((j - 5 - lati) * 141));
+				   
                     switch (board[i][j]->get_player()) {
                     case 'o':
                         break;
@@ -174,13 +190,14 @@ void print(sf::RenderWindow& window) {
                         window.draw(blu_verticale_sprite);
                         break;
                     case 'r':
+                        std::cout << b << " " << a <<" "<< j <<" "<<lati<< std::endl;
                         rosso_verticale_sprite.setPosition(sf::Vector2f(b, a));
                         window.draw(rosso_verticale_sprite);
                         break;
                     }
                     break;
 
-                    break;*/
+                    break;
                 case 's':
                     switch (board[i][j]->get_player()) {
                     case 'o':

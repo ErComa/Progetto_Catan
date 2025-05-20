@@ -24,7 +24,7 @@ protected:
 	int colore;// opacita pixel perche si
 	char player;
 public:
-	coso(char a, int b) : stato(a), colore(b), player('r') {}
+	coso(char a, int b) : stato(a), colore(b), player('o') {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }

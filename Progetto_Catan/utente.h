@@ -5,21 +5,25 @@
 #include "SFML\System.hpp"
 
 
-/*class utente {
+class utente {
 private:
-	int villaggi;
+	int insediamenti;
 	int citta;
 	int strade;
 	int risorse[5];
+	std::vector<int> numeri;
 public:
 	utente();
-	int get_villaggi();
+	int get_insediamenti();
 	int get_citta();
 	int get_strade();
 	int get_risorse(int );
-	bool piazza_villaggio();
+	bool piazza_insediamenti();
 	bool piazza_strada();
 	bool piazza_citta();
 	void aggiungi_risorsa(int);
+	void aggiungi_insediamenti();
+	void aggiungi_strade();
+	void aggiungi_citta();
+	void aggiungi_numero(int);
 };
-*/

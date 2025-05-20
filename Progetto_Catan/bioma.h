@@ -12,7 +12,7 @@ private:
 public:
 	bioma(int, int, int);
 	int get_type();
-	int produzione_risorsa();
+	int Tiro_dadi();
 	int get_colore() { return colore; }
 };
 

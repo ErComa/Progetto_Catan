@@ -13,6 +13,7 @@ void inizializzazione_biomi();
 void assegnazione_numeri();
 void print(sf::RenderWindow& window);
 int id(int , int );
+void gioco(bioma *mappa[5][10], coso *board[11][21],int);
 
 extern char griglia[righe][colonne];
 extern int colori[19];

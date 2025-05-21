@@ -136,6 +136,7 @@ void print(sf::RenderWindow& window) {
     sf::Sprite board_sprite(board_texture);
     //deltax 68, deltay 123
     //44 318
+    board[5][4]->set_player('r');
     board[3][6]->set_player('r');
     window.draw(board_sprite);
     for (int i = 0; i < righe; ++i) {
@@ -144,12 +145,11 @@ void print(sf::RenderWindow& window) {
         if (i == 2 || i == 8) { vertici++; }
         for (int j = 0; j < colonne; ++j) {
          if (board[i][j] != nullptr){if (board[i][j]->get_stato() == 'v') { vertici++; }}
-         if (board[i][j] == nullptr) { lati++;  std::cout<<"controllo "<<i<<" " << j << " " << lati << std::endl;
-         }
+         if (board[i][j] == nullptr) { lati++;}
          switch (i) {
          case 1:
 			 a = 122;
-		 break;
+		    break;
          case 2:
              a = (318 - 123);
 			 break;
@@ -158,6 +158,7 @@ void print(sf::RenderWindow& window) {
 			 break;
 		 case 3:
 			 a = 240;
+			 break;
 		 case 6:
              a = (318 + 123);
 			 break;
@@ -175,12 +176,19 @@ void print(sf::RenderWindow& window) {
              break;
 ;         }
             b = 44 + ((j - 2-vertici) * 71);
-            
+            if (i == 2 && j <= 15) { b -= 2; a += 2; }
+            if (i == 4 && j <= 15) { b -= 2;}
+            if (i == 6 && j <= 15) { b -= 2;}
+            if (i == 8 && j <= 14) { b -= 2; a -= 2;
+            }
             if (board[i][j] != nullptr)
             {
                 switch (board[i][j]->get_stato()) {
                case 'l':
                    b = (181 + ((j - lati) * 141));
+                   if (i == 3 || i == 7) { b += 71;}
+                   if (i == 1 || i == 9) {b += 141;}
+                   if (i == 2 && j <= 15) { b -= 50;}
 				   
                     switch (board[i][j]->get_player()) {
                     case 'o':
@@ -190,7 +198,7 @@ void print(sf::RenderWindow& window) {
                         window.draw(blu_verticale_sprite);
                         break;
                     case 'r':
-                        std::cout << b << " " << a <<" "<< j <<" "<<lati<< std::endl;
+                        std::cout << b << " " << a <<" j "<< j <<" i "<<i<< std::endl;
                         rosso_verticale_sprite.setPosition(sf::Vector2f(b, a));
                         window.draw(rosso_verticale_sprite);
                         break;

@@ -12,9 +12,9 @@ void stampaColori() {
     for (int i = 0; i < 11; ++i) {
         for (int j = 0; j < 21; ++j) {
             if (board[i][j] != nullptr)
-                cout << board[i][j]->get_colore();
+                cout << board[i][j]->get_stato();
             else
-                cout << "..."; // Usa "." o "" per le celle vuote
+                cout << "."; // Usa "." o "" per le celle vuote
         }
         cout << endl;
     }
@@ -56,7 +56,7 @@ int main()
                 sf::Vector2i localPosition = sf::Mouse::getPosition(window);
                 x = localPosition.x;
                 y = localPosition.y;
-                sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
+                //sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
 
                 /*std::cout << "Pixel a (" << x << ", " << y << ")"
                     << "A=" << static_cast<int>(pixelColor.a) << "\n";*/

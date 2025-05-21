@@ -27,7 +27,7 @@
     <ClCompile Include="bioma.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
-    <ClCompile Include="lati.cpp">
+    <ClCompile Include="game.cpp">
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>

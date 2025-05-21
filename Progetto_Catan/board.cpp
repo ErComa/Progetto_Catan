@@ -126,6 +126,8 @@ void print(sf::RenderWindow& window) {
     rosso_verticale_texture.loadFromFile("./media/rosso_verticale.png");
     sf::Texture board_texture;
     board_texture.loadFromFile("./media/board.png");
+    sf::Texture board_punti_texture;
+    board_punti_texture.loadFromFile("./media/board_punti.png");
     //creazione degli sprite
     sf::Sprite blu_giu_sprite(blu_giu_texture);
     sf::Sprite blu_su_sprite(blu_su_texture);
@@ -134,10 +136,9 @@ void print(sf::RenderWindow& window) {
     sf::Sprite rosso_su_sprite(rosso_su_texture);
     sf::Sprite rosso_verticale_sprite(rosso_verticale_texture);
     sf::Sprite board_sprite(board_texture);
+    sf::Sprite board_punti_sprite(board_punti_texture);
     //deltax 68, deltay 123
     //44 318
-    board[5][4]->set_player('r');
-    board[3][6]->set_player('r');
     window.draw(board_sprite);
     for (int i = 0; i < righe; ++i) {
 		vertici = 0;
@@ -244,5 +245,6 @@ void print(sf::RenderWindow& window) {
             }
         }
     }
+    window.draw(board_punti_sprite);
     window.display();
 }

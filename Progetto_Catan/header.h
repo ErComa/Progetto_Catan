@@ -12,6 +12,7 @@ void inizializzazione_board();
 void inizializzazione_biomi();
 void assegnazione_numeri();
 void print(sf::RenderWindow& window);
+int id(int , int );
 
 extern char griglia[righe][colonne];
 extern int colori[19];
@@ -24,7 +25,7 @@ protected:
 	int colore;// opacita pixel perche si
 	char player;
 public:
-	coso(char a, int b) : stato(a), colore(b), player('r') {}
+	coso(char a, int b) : stato(a), colore(b), player('o') {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
@@ -42,32 +43,3 @@ public:
 
 extern coso* board[11][21];
 extern numero* numeri[19];
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-board completa da implementare se ho tempo
-char griglia[righe][colonne] = {
-		{'o','o','o','o','v','s','v','g','v','s','v','g','v','s','v','g','v','o','o','o','o'},
-		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
-		{'o','o','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o'},
-		{'o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o'},
-		{'v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v'},
-		{'l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l'},
-		{'v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v'},
-		{'o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o'},
-		{'o','o','v','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','v','o','o'},
-		{'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
-		{'o','o','o','o','v','g','v','s','v','g','v','s','v','g','v','s','v','o','o','o','o'},
-};
-*/

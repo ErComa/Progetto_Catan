@@ -13,6 +13,8 @@ void inizializzazione_biomi();
 void assegnazione_numeri();
 void print(sf::RenderWindow& window);
 int id(int , int );
+void overlay(sf::RenderWindow& window);
+void print_vertici(sf::RenderWindow& window);
 
 extern char griglia[righe][colonne];
 extern int colori[19];
@@ -24,14 +26,17 @@ protected:
 	char stato;// tah se e villaggio o casa o boh
 	int colore;// opacita pixel perche si
 	char player;
+	char tipo;// perche non so come chiamarlo
 public:
-	coso(char a, int b) : stato(a), colore(b), player('o') {}
+	coso(char a, int b) : stato(a), colore(b), player('r'),tipo('v') {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
 	char get_player() { return player; }
 	void set_player(char a) { player = a; }
 	void set_stato(char a) { stato = a; }
+	char get_tipo() { return tipo; }
+	void set_tipo(char a) { tipo = a; }
 };
 
 class numero {

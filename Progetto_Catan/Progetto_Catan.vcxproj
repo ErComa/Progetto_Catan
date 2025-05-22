@@ -137,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="bioma.cpp" />
     <ClCompile Include="board.cpp" />
+    <ClCompile Include="disegno.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="Progetto_Catan.cpp" />
     <ClCompile Include="utente.cpp" />

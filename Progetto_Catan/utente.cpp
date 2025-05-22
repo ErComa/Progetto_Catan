@@ -6,7 +6,7 @@
 #include "utente.h"
 using namespace std;
 utente::utente(){
-	insediamenti = 2;
+	insediamenti = 1;
 	citta = 0;
 	strade = 2;
 	for (int i = 0; i < 5; ++i) {
@@ -19,6 +19,10 @@ int utente::get_citta() { return citta; }
 int utente::get_strade() { return strade; }
 int utente::get_risorse(int a) { return risorse[a]; }
 bool utente::piazza_insediamenti() {
+	if (insediamenti > 0) {
+		insediamenti--;
+		return true;
+	}
 	if (risorse[1] > 0 && risorse[2] > 0 && risorse[3] > 0 && risorse[5] > 0) {
 		risorse[1]--;
 		risorse[2]--;
@@ -31,6 +35,10 @@ bool utente::piazza_insediamenti() {
 	}
 }
 bool utente::piazza_strada() {
+	if (strade > 0) {
+		strade--;
+		return true;
+	}
 	if (risorse[1] > 0 && risorse[2] > 0) {
 		risorse[1]--;
 		risorse[2]--;

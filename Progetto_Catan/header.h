@@ -12,7 +12,7 @@ void inizializzazione_board();
 void inizializzazione_biomi();
 void assegnazione_numeri();
 void print(sf::RenderWindow& window);
-int id(int , int );
+int id(sf::RenderWindow& window);
 void overlay(sf::RenderWindow& window);
 void print_vertici(sf::RenderWindow& window);
 
@@ -20,13 +20,14 @@ extern char griglia[righe][colonne];
 extern int colori[19];
 extern int tipo[19];
 extern int griglia_biomi[5][10];
+extern bool turno;
 
 class coso {
 protected:
-	char stato;// tah se e villaggio o casa o boh
+	char stato;// vertice l s g
 	int colore;// opacita pixel perche si
-	char player;
-	char tipo;// perche non so come chiamarlo
+	char player;// colore del player r b 
+	char tipo;// casa o villaggio
 public:
 	coso(char a, int b) : stato(a), colore(b), player('r'),tipo('v') {}
 	char get_stato() { return stato; }

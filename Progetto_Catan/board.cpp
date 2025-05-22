@@ -115,13 +115,6 @@ void print(sf::RenderWindow& window) {
    
     sf::Sprite board_punti_sprite(board_punti_texture);
     sf::Sprite board_overlay_sprite(board_overlay_texture);
-    //deltax 68, deltay 123
-    //44 318
-    board[6][4]->set_player('b');
-    board[6][5]->set_player('b');
-    board[6][6]->set_player('b');
-    board[6][7]->set_player('b');
-    board[6][8]->set_player('b');
     window.draw(board_overlay_sprite);
     overlay(window);
     window.draw(board_punti_sprite);

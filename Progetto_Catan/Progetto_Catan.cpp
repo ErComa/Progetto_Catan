@@ -12,6 +12,16 @@ int main()
     assegnazione_numeri();
     inizializzazione_board();
     inizializzazione_biomi();
+    bool turno = 0;
+    for (int riga = 0; riga < 5; ++riga) {
+        for (int col = 0; col < 10; ++col) {
+            if (mappa[riga][col] != nullptr) {
+                cout << mappa[riga][col]->get_colore();
+            }
+            else { cout << " "; }
+        }
+            cout <<endl;
+    }
 
     while (window.isOpen())
     {
@@ -21,11 +31,7 @@ int main()
             //evento mouse
             if (event->is<sf::Event::MouseButtonPressed>())
             {
-                sf::Vector2i localPosition = sf::Mouse::getPosition(window);
-                int x = localPosition.x;
-                int y = localPosition.y;
-				int colore = id(x, y);
-                cout << colore << endl;
+                cout << id(window) << endl;
             }
         }
         window.clear();

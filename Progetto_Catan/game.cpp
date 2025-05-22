@@ -6,14 +6,17 @@
 #include "bioma.h"
 using namespace std;
 
-int id(int x, int y) {
+int id(sf::RenderWindow& window) {
+    sf::Vector2i localPosition = sf::Mouse::getPosition(window);
+    int x = localPosition.x;
+    int y = localPosition.y;
 	sf::Image image;
 	image.loadFromFile("./media/board.png");
 	sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
 	return pixelColor.a;	
 }
 
-void gioco(bioma* mappa[5][10], coso* board[11][21], int colore) {
+void gioco(int colore) {
     int i, j;
     int stato =0;
     /*
@@ -25,7 +28,12 @@ void gioco(bioma* mappa[5][10], coso* board[11][21], int colore) {
             if (board[r][c] != nullptr && board[r][c]->get_colore() == colore) {
                 i = r;
 				j = c;
-                stato = 1;
+				if (board[r][c]->get_stato() == 'v') {
+					stato = 3;
+				}
+				else {
+					stato = 1;
+				}
             }
         }
     }
@@ -37,5 +45,8 @@ void gioco(bioma* mappa[5][10], coso* board[11][21], int colore) {
 				stato = 2;
             }
         }
+    }
+    switch (stato) {
+
     }
 }

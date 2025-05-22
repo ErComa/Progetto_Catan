@@ -5,7 +5,7 @@
 #include "header.h"
 #include "utente.h"
 using namespace std;
-utente::utente(){
+utente::utente() {
 	insediamenti = 2;
 	citta = 0;
 	strade = 2;

@@ -10,7 +10,7 @@ private:
 	int insediamenti;
 	int citta;
 	int strade;
-	int risorse[5];
+	int risorse[6];
 	std::vector<int> numeri;
 public:
 	utente();

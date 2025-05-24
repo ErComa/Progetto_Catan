@@ -40,7 +40,10 @@ int main()
             //evento mouse
             if (event->is<sf::Event::MouseButtonPressed>())
             {
-                event_handler(window, giocatore1, giocatore2);
+               
+                    event_handler(window, giocatore1, giocatore2);
+                
+				
             }
         }
         window.clear();

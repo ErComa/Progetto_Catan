@@ -55,7 +55,6 @@ vector<int> gioco(int colore) {
 	risorsa = { i, j, type };
 	return risorsa;
 }
-
 int Tiro_dadi() {
     int a = 0;
     srand(time(NULL));
@@ -72,6 +71,11 @@ int Tiro_dadi() {
     }
     return a;
 }
+
+void aggiungi_risorse() {
+
+}
+
 
 void aggiungi_risorse(utente* giocatore1, utente* giocatore2) {
 	int numero_estratto = Tiro_dadi();

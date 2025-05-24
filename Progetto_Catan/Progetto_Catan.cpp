@@ -4,16 +4,24 @@
 #include "SFML\System.hpp"
 #include "header.h"
 #include "bioma.h"
+#include "utente.h"
 using namespace std;
 sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "non so a cosa serve sta stringa ma se la tolgo non compila quindi la lasciamo qua");
-
+int stato_turno;
+int iniziale;
+char turno;
 int main()
 {
+    stato_turno = 0;
+    iniziale = 6;
+    turno = 'r';
+	utente* giocatore1 = new utente();
+	utente* giocatore2 = new utente();
     assegnazione_numeri();
     inizializzazione_board();
     inizializzazione_biomi();
-    bool turno = 0;
-    int stato_turno = 0;
+    
+    
     for (int riga = 0; riga < 5; ++riga) {
         for (int col = 0; col < 10; ++col) {
             if (mappa[riga][col] != nullptr) {
@@ -32,7 +40,7 @@ int main()
             //evento mouse
             if (event->is<sf::Event::MouseButtonPressed>())
             {
-                event_handler(window);
+                event_handler(window, giocatore1, giocatore2);
             }
         }
         window.clear();

@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
+#include "utente.h"
 
 //classi per la board
 const int righe = 11;
@@ -15,14 +16,15 @@ void print(sf::RenderWindow& window);
 int id(sf::RenderWindow& window);
 void overlay(sf::RenderWindow& window);
 void print_vertici(sf::RenderWindow& window);
-void event_handler(sf::RenderWindow& window);
+void event_handler(sf::RenderWindow& window,utente* giocatore1,utente* giocatore2);
 
 extern char griglia[righe][colonne];
 extern int colori[19];
 extern int tipo[19];
 extern int griglia_biomi[5][10];
-extern bool turno;
+extern char turno;
 extern int stato_turno;
+extern int iniziale;
 
 class coso {
 protected:
@@ -32,7 +34,7 @@ protected:
 	char tipo;// casa o villaggio
 	bool stato_bioma;
 public:
-	coso(char a, int b) : stato(a), colore(b), player('r'),tipo('v'), stato_bioma(false) {}
+	coso(char a, int b) : stato(a), colore(b), player('o'),tipo('v'), stato_bioma(false) {}
 	coso(int a, bool b) : colore(a), stato_bioma(b) {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }

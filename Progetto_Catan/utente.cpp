@@ -6,11 +6,11 @@
 #include "utente.h"
 using namespace std;
 utente::utente(){
-	insediamenti = 1;
+	insediamenti = 0;
 	citta = 0;
 	strade = 2;
-	for (int i = 0; i < 5; ++i) {
-		risorse[i] = 0;
+	for (int i = 0; i < 6; ++i) {
+		risorse[i] = 200;
 	}
 
 }
@@ -18,12 +18,12 @@ int utente::get_insediamenti() { return insediamenti; }
 int utente::get_citta() { return citta; }
 int utente::get_strade() { return strade; }
 int utente::get_risorse(int a) { return risorse[a]; }
-bool utente::piazza_insediamenti() {
-	if (insediamenti > 0) {
+bool utente::piazza_insediamenti(int i, int j) {
+	if (insediamenti > 0 && iniziale >0 ) {
 		insediamenti--;
 		return true;
 	}
-	if (risorse[1] > 0 && risorse[2] > 0 && risorse[3] > 0 && risorse[5] > 0) {
+	if (risorse[1] > 0 && risorse[2] > 0 && risorse[3] > 0 && risorse[5] > 0 && piazzamento_insediamenti(i,j)) {
 		risorse[1]--;
 		risorse[2]--;
 		risorse[3]--;
@@ -34,12 +34,12 @@ bool utente::piazza_insediamenti() {
 		return false;
 	}
 }
-bool utente::piazza_strada() {
-	if (strade > 0) {
+bool utente::piazza_strada(int i, int j) {
+	if (strade > 0 && iniziale > 69) {
 		strade--;
 		return true;
 	}
-	if (risorse[1] > 0 && risorse[2] > 0) {
+	if (risorse[1] > 0 && risorse[2] > 0 && piazzamento_strade(i, j)) {
 		risorse[1]--;
 		risorse[2]--;
 		return true;
@@ -47,7 +47,7 @@ bool utente::piazza_strada() {
 	else { return false; }
 	
 }
-bool utente::piazza_citta() {
+bool utente::piazza_citta(int i, int j) {
 	if (risorse[4] > 3 && risorse[5] > 2) {
 		risorse[4]-=3;
 		risorse[5]-=2;

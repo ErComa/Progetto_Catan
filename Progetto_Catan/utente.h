@@ -4,7 +4,9 @@
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
 
-
+bool piazzamento_insediamenti(int i, int j);
+bool piazzamento_strade(int i, int j);
+bool piazzamento_citta(int i, int j);
 class utente {
 private:
 	int insediamenti;
@@ -18,12 +20,9 @@ public:
 	int get_citta();
 	int get_strade();
 	int get_risorse(int );
-	bool piazza_insediamenti();
-	bool piazza_strada();
-	bool piazza_citta();
+	bool piazza_insediamenti(int, int);
+	bool piazza_strada(int, int);
+	bool piazza_citta(int, int);
 	void aggiungi_risorsa(int);
-	void aggiungi_insediamenti();
-	void aggiungi_strade();
-	void aggiungi_citta();
 	void aggiungi_numero(int);
 };

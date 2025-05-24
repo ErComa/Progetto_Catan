@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
+#include <vector>
 
 bool piazzamento_insediamenti(int i, int j);
 bool piazzamento_strade(int i, int j);
@@ -13,7 +14,7 @@ private:
 	int citta;
 	int strade;
 	int risorse[6];
-	std::vector<int> numeri;
+	std::vector<int> numeri_;
 public:
 	utente();
 	int get_insediamenti();
@@ -25,4 +26,5 @@ public:
 	bool piazza_citta(int, int);
 	void aggiungi_risorsa(int);
 	void aggiungi_numero(int);
+	void aggiunta_risorsa(std::vector<int>, std::vector<int>);
 };

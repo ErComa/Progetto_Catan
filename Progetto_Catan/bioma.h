@@ -14,6 +14,7 @@ public:
 	int get_type();
 	int Tiro_dadi();
 	int get_colore() { return colore; }
+	int get_numero() { return numero; }
 };
 
 extern bioma* mappa[5][10];

@@ -20,8 +20,19 @@ int main()
     assegnazione_numeri();
     inizializzazione_board();
     inizializzazione_biomi();
-    
-    
+    // controllo numeri
+    for (int i = 0; i < 5; ++i) {
+        for (int j = 0; j < 10; ++j) {
+            if (mappa[i][j] != nullptr) {
+                std::cout << mappa[i][j]->get_numero() << " ";
+            }
+            else {
+                std::cout << "  ";
+            }
+        }
+        std::cout << std::endl;
+    }
+	// controllo colori
     for (int riga = 0; riga < 5; ++riga) {
         for (int col = 0; col < 10; ++col) {
             if (mappa[riga][col] != nullptr) {

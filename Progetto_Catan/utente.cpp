@@ -4,6 +4,7 @@
 #include "SFML\System.hpp"
 #include "header.h"
 #include "utente.h"
+#include <vector>
 using namespace std;
 utente::utente(){
 	insediamenti = 0;
@@ -61,7 +62,19 @@ void utente::aggiungi_risorsa(int a) {
 }
 
 void utente::aggiungi_numero(int a) {
-	numeri.push_back(a);
+	numeri_.push_back(a);
+}
+
+void utente::aggiunta_risorsa(vector<int> numeri2, vector<int> risorse2) {
+	int a;
+	for (int i = 0; i < numeri2.size(); ++i) {
+		if(i<numeri_.size()){
+			if (numeri_[i] == numeri2[i]) {
+				risorse[risorse2[i]]++;
+			}
+		}
+	}
+	
 }
 
 /*

@@ -19,32 +19,23 @@ bool piazzamento_insediamenti(int i, int j) {
 	}
 	else {
 		if (board[i][j]->get_player() == 'o') {
-			a = i+1;
+			a = i + 1;
 			b = j;
-			if (board[i][j] != nullptr) { if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) { cout << "cisivede1"; return true; } }
+			if (a <= 11) { if (board[a][b] != nullptr) { if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) {return true; }}}
 			a = i - 1;
 			b = j;
-			if (board[i][j] != nullptr) {
-				if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) { cout << "cisived2e"; return true; }
-			}
+			if (a <= 11) {if (board[a][b] != nullptr) {if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) {return true; }}}
 			a = i;
-			b = j+1;
-			if (board[i][j] != nullptr) {
-				if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) { cout << "cisivede3";return true; }
-			}
+			b = j + 1;
+			if (b <= 21) {if (board[a][b] != nullptr) {if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) {return true; }}}
 			a = i;
 			b = j - 1;
-			if (board[i][j] != nullptr) {
-				if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) { cout << "cisivede4"; return true; }
-			}
+			if (b <= 21) {if (board[a][b] != nullptr) {if (board[i][j]->get_stato() != 'e' && board[a][b]->get_player() == turno) {return true; }}}
+			cout << "false" << endl;
+			return false;
 		}
-
 	}
-	cout << "false" << endl;
-	return false;
-
 }
-
 bool piazzamento_strade(int i, int j) {
 	int a, b;
 	cout << "strads" << endl;
@@ -55,21 +46,21 @@ bool piazzamento_strade(int i, int j) {
 			if(board[i][j]->get_player() == 'o'){
 				a = i;
 				b = j+1;
-				if (board[i][j] != nullptr) { if ( board[a][b]->get_player() == turno) { cout << "maporcodio";return true; } }
+				if (b <= 21) { if (board[a][b] != nullptr) { if (board[a][b]->get_player() == turno) { return true; } } }
 				a = i;
 				b = j-1;
-				if (board[i][j] != nullptr) {if ( board[a][b]->get_player() == turno) { cout << "maporcodio";return true; }}
+				if (b <= 21) {if (board[a][b] != nullptr) { if (board[a][b]->get_player() == turno) { return true; } }}
 				return false;
 			}
-		}
+		}		
 		if (board[i][j]->get_stato() == 'l') {
 			if (board[i][j]->get_player() == 'o') {
 				a = i + 1;
 				b = j;
-				if (board[i][j] != nullptr) { if (board[a][b]->get_player() == turno) { return true; } }
+				if (a <= 11) { if (board[a][b] != nullptr) { if (board[a][b]->get_player() == turno) { return true; } } }
 				a = i - 1;
 				b = j;
-				if (board[i][j] != nullptr) { if (board[a][b]->get_player() == turno) { return true; } }
+				if (a <= 11) { if (board[a][b] != nullptr) { if (board[a][b]->get_player() == turno) { return true; } } }
 				return false;
 			}
 		}

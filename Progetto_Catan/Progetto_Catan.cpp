@@ -13,6 +13,7 @@ int main()
     inizializzazione_board();
     inizializzazione_biomi();
     bool turno = 0;
+    int stato_turno = 0;
     for (int riga = 0; riga < 5; ++riga) {
         for (int col = 0; col < 10; ++col) {
             if (mappa[riga][col] != nullptr) {
@@ -31,7 +32,7 @@ int main()
             //evento mouse
             if (event->is<sf::Event::MouseButtonPressed>())
             {
-                cout << id(window) << endl;
+                event_handler(window);
             }
         }
         window.clear();

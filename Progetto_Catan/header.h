@@ -15,12 +15,14 @@ void print(sf::RenderWindow& window);
 int id(sf::RenderWindow& window);
 void overlay(sf::RenderWindow& window);
 void print_vertici(sf::RenderWindow& window);
+void event_handler(sf::RenderWindow& window);
 
 extern char griglia[righe][colonne];
 extern int colori[19];
 extern int tipo[19];
 extern int griglia_biomi[5][10];
 extern bool turno;
+extern int stato_turno;
 
 class coso {
 protected:
@@ -28,8 +30,10 @@ protected:
 	int colore;// opacita pixel perche si
 	char player;// colore del player r b 
 	char tipo;// casa o villaggio
+	bool stato_bioma;
 public:
-	coso(char a, int b) : stato(a), colore(b), player('r'),tipo('v') {}
+	coso(char a, int b) : stato(a), colore(b), player('r'),tipo('v'), stato_bioma(false) {}
+	coso(int a, bool b) : colore(a), stato_bioma(b) {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }
@@ -38,6 +42,7 @@ public:
 	void set_stato(char a) { stato = a; }
 	char get_tipo() { return tipo; }
 	void set_tipo(char a) { tipo = a; }
+	bool get_stato_bioma() { return stato_bioma; }
 };
 
 class numero {

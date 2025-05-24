@@ -11,7 +11,7 @@
 using namespace std;
 
 void overlay(sf::RenderWindow& window) {
-    int a, b, vertici, lati, vertici_counter; 
+    int a, b, vertici, lati, vertici_counter;
     a = 0;
     b = 0;
     // Caricamento delle texture
@@ -52,8 +52,11 @@ void overlay(sf::RenderWindow& window) {
         vertici_counter = 0;
         if (i == 2 || i == 8) { vertici++; }
         for (int j = 0; j < colonne; ++j) {
-            if (board[i][j] != nullptr) { if (board[i][j]->get_stato() == 'v') { vertici++; } }
-            if (board[i][j] == nullptr) { lati++; }
+            if (board[i][j] != nullptr) {if(board[i][j]->get_stato_bioma() != true) if (board[i][j]->get_stato() == 'v') { vertici++; } }
+            {
+                if (board[i][j] == nullptr) {lati++; } else { if (board[i][j]->get_stato_bioma() == true) { lati++; }
+                }
+            }
             switch (i) {
             case 1:
                 a = 122;
@@ -92,73 +95,76 @@ void overlay(sf::RenderWindow& window) {
                 b -= 2; a -= 2;
             }
             if (board[i][j] != nullptr)
-            {
-                switch (board[i][j]->get_stato()) {
-                case 'l':
-                    b = (181 + ((j - lati) * 141));
-                    if (i == 3 || i == 7) { b += 71; }
-                    if (i == 1 || i == 9) { b += 141; }
-                    if (i == 2 && j <= 15) { b -= 50; }
+                if (board[i][j]->get_stato_bioma() != true) {
+                    {
+                        switch (board[i][j]->get_stato()) {
+                        case 'l':
+                            b = (181 + ((j - lati) * 141));
+                            if (i == 3 || i == 7) { b += 71; }
+                            if (i == 1 || i == 9) { b += 141; }
+                            if (i == 2 && j <= 15) { b -= 50; }
 
-                    switch (board[i][j]->get_player()) {
-                    case 'o':
-                        break;
-                    case 'b':
-                        blu_verticale_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(blu_verticale_sprite);
-                        break;
-                    case 'r':
-                        //std::cout << b << " " << a <<" j "<< j <<" i "<<i<< std::endl;
-                        rosso_verticale_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(rosso_verticale_sprite);
-                        break;
-                    }
-                    break;
+                            switch (board[i][j]->get_player()) {
+                            case 'o':
+                                break;
+                            case 'b':
+                                blu_verticale_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(blu_verticale_sprite);
+                                break;
+                            case 'r':
+                                //std::cout << b << " " << a <<" j "<< j <<" i "<<i<< std::endl;
+                                rosso_verticale_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(rosso_verticale_sprite);
+                                break;
+                            }
+                            break;
 
-                    break;
-                case 's':
-                    switch (board[i][j]->get_player()) {
-                    case 'o':
-                        break;
-                    case 'b':
-                        blu_su_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(blu_su_sprite);
-                        break;
-                    case 'r':
-                        rosso_su_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(rosso_su_sprite);
-                        break;
-                    }
-                    break;
-                    break;
-                case 'g':
-                    switch (board[i][j]->get_player()) {
-                    case 'o':
-                        break;
-                    case 'b':
-                        blu_giu_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(blu_giu_sprite);
-                        break;
-                    case 'r':
-                        rosso_giu_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(rosso_giu_sprite);
-                        break;
-                    }
-                    break;
+                            break;
+                        case 's':
+                            switch (board[i][j]->get_player()) {
+                            case 'o':
+                                break;
+                            case 'b':
+                                blu_su_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(blu_su_sprite);
+                                break;
+                            case 'r':
+                                rosso_su_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(rosso_su_sprite);
+                                break;
+                            }
+                            break;
+                            break;
+                        case 'g':
+                            switch (board[i][j]->get_player()) {
+                            case 'o':
+                                break;
+                            case 'b':
+                                blu_giu_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(blu_giu_sprite);
+                                break;
+                            case 'r':
+                                rosso_giu_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(rosso_giu_sprite);
+                                break;
+                            }
+                            break;
 
-                    break;
-                case 'v':
-                    break;
+                            break;
+                        case 'v':
+                            break;
+                        }
+                    }
                 }
-            }
         }
     }
 }
-
 void print_vertici(sf::RenderWindow& window) {
     //y: 193 deltay1 37  deltay2 83
     //x: 175 deltax = 69
-    int a, b = 0;
+    int a, b;
+    a = 0;
+    b = 0;
     int f = 37;
     int g = 83;
     int vertici_counter;
@@ -180,42 +186,45 @@ void print_vertici(sf::RenderWindow& window) {
         vertici_counter = 0;
         for (int j = 0; j < colonne; ++j) {
 
-            if (board[i][j] != nullptr && (board[i][j]->get_stato() == 'v')) {
-                b = 175 + 71 * vertici_counter+69;
-				vertici_counter++;
-                if (i == 2) {if ((vertici_counter % 2) == 1) { a = 193 + f; }else { a = 193; }}
-                if (i == 4) {b -= 69;if ((vertici_counter % 2) == 1) { a = 193 + 2 * f + g; }else { a = 193 + f + g; } }
-                if (i == 6) { b -= 69;if ((vertici_counter % 2) == 1) { a = 193 + 2 * f + 2 * g; }else { a = 193 + 3 * f + 2 * g; }}
-                if (i == 8) {if ((vertici_counter % 2) == 1) { a = 193 + 3 * f + 3 * g; }else { a = 193 + 4 * f + 3 * g; }}
+            if (board[i][j] != nullptr) {
+                if (board[i][j]->get_stato() == 'v') {
+                    if (board[i][j]->get_stato_bioma() != true) {
+                        b = 175 + 71 * vertici_counter + 69;
+                        vertici_counter++;
+                        if (i == 2) { if ((vertici_counter % 2) == 1) { a = 193 + f; } else { a = 193; } }
+                        if (i == 4) { b -= 69;if ((vertici_counter % 2) == 1) { a = 193 + 2 * f + g; } else { a = 193 + f + g; } }
+                        if (i == 6) { b -= 69;if ((vertici_counter % 2) == 1) { a = 193 + 2 * f + 2 * g; } else { a = 193 + 3 * f + 2 * g; } }
+                        if (i == 8) { if ((vertici_counter % 2) == 1) { a = 193 + 3 * f + 3 * g; } else { a = 193 + 4 * f + 3 * g; } }
 
-                switch (board[i][j]->get_player()) {
-                case 'b':
-                    switch (board[i][j]->get_tipo()) {
-                    case 'c':
-                        casa_blu_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(casa_blu_sprite);
-                        break;
-                    case 'v':
-                        villaggio_blu_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(villaggio_blu_sprite);
-                        break;
+                        switch (board[i][j]->get_player()) {
+                        case 'b':
+                            switch (board[i][j]->get_tipo()) {
+                            case 'c':
+                                casa_blu_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(casa_blu_sprite);
+                                break;
+                            case 'v':
+                                villaggio_blu_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(villaggio_blu_sprite);
+                                break;
+                            }
+                            break;
+                        case 'r':
+                            switch (board[i][j]->get_tipo()) {
+                            case 'c':
+                                casa_rossa_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(casa_rossa_sprite);
+                                break;
+                            case 'v':
+                                villaggio_rosso_sprite.setPosition(sf::Vector2f(b, a));
+                                window.draw(villaggio_rosso_sprite);
+                                break;
+                            }
+                            break;
+                        }
                     }
-                    break;
-                case 'r':
-                    switch (board[i][j]->get_tipo()) {
-                    case 'c':
-                        casa_rossa_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(casa_rossa_sprite);
-                        break;
-                    case 'v':
-                        villaggio_rosso_sprite.setPosition(sf::Vector2f(b, a));
-                        window.draw(villaggio_rosso_sprite);
-                        break;
-                    }
-                    break;
                 }
             }
         }
     }
 }
-

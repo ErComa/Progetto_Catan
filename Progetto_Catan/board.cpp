@@ -12,15 +12,15 @@ coso* board[11][21];
 numero* numeri[19];
 char griglia[righe][colonne] = {
         {'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
-        {'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
+        {'o','o','o','o','o','o','b','o','l','o','b','o','l','o','b','o','o','o','o','o','o'},
         {'o','o','o','o','o','g','v','s','v','g','v','s','v','g','v','s','o','o','o','o','o'},
-        {'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
+        {'o','o','o','o','b','o','l','o','b','o','l','o','b','o','l','o','b','o','o','o','o'},
         {'o','o','o','g','v','s','v','g','v','s','v','g','v','s','v','g','v','s','o','o','o'},
-        {'o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o'},
+        {'o','o','b','o','l','o','b','o','l','o','b','o','l','o','b','o','l','o','b','o','o'},
         {'o','o','o','s','v','g','v','s','v','g','v','s','v','g','v','s','v','g','o','o','o'},
-        {'o','o','o','o','o','o','l','o','o','o','l','o','o','o','l','o','o','o','o','o','o'},
+        {'o','o','o','o','b','o','l','o','b','o','l','o','b','o','l','o','b','o','o','o','o'},
         {'o','o','o','o','o','s','v','g','v','s','v','g','v','s','v','g','o','o','o','o','o'},
-        {'o','o','o','o','o','o','o','o','l','o','o','o','l','o','o','o','o','o','o','o','o'},
+        {'o','o','o','o','o','o','b','o','l','o','b','o','l','o','b','o','o','o','o','o','o'},
         {'o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o','o'},
 };
 int colori[19] = { 210,209,208,207,206,205,204,203,202,201,200,199,198,197,196,195,194,193,192 };
@@ -73,14 +73,15 @@ void inizializzazione_biomi() {
 }
 
 void inizializzazione_board() {
-    int a, counter, vertici, b;
+    int a, counter, vertici, b, biomi, c;
     counter = 0;
     vertici = 0;
-
+    biomi=0;
     for (int i = 0; i < righe; ++i) {
         for (int j = 0; j < colonne; ++j) {
             a = 254 - counter;
             b = 190 - vertici;
+            c = 210 - biomi;
             switch (griglia[i][j]) {
             case '0':
                 board[i][j] = nullptr;
@@ -100,6 +101,10 @@ void inizializzazione_board() {
             case 'v'://identificatore verticei: 190 in giu
                 board[i][j] = new coso('v', b);
                 vertici++;
+                break;
+			case 'b':
+                board[i][j] = new coso(c, true);
+                biomi++;
                 break;
             }
         }

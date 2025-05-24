@@ -5,6 +5,7 @@
 #include "header.h"
 #include "bioma.h"
 using namespace std;
+int gioco(int);
 
 int id(sf::RenderWindow& window) {
     sf::Vector2i localPosition = sf::Mouse::getPosition(window);
@@ -16,9 +17,8 @@ int id(sf::RenderWindow& window) {
 	return pixelColor.a;	
 }
 
-void gioco(int colore) {
+int gioco(int colore) {
     int i, j;
-    int stato =0;
     /*
     lato: 1
 	esagono: 2
@@ -29,10 +29,10 @@ void gioco(int colore) {
                 i = r;
 				j = c;
 				if (board[r][c]->get_stato() == 'v') {
-					stato = 3;
+					return 3;
 				}
 				else {
-					stato = 1;
+					return 1;
 				}
             }
         }
@@ -42,11 +42,19 @@ void gioco(int colore) {
             if (mappa[r][c] != nullptr && mappa[r][c]->get_colore() == colore) {
                 i = r;
                 j = c;
-				stato = 2;
+				return 2;
             }
         }
     }
-    switch (stato) {
+}
 
+void event_handler(sf::RenderWindow& window) {
+	int colore = id(window);
+	int risorsa = gioco(colore);
+    switch (stato_turno) {
+    case 0:
+
+        break;
     }
+
 }

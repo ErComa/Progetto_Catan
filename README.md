@@ -2,7 +2,6 @@
 <html lang="it">
 <head>
  <meta charset="UTF-8">
- <title>Progetto Catan</title>
 </head>
 <body>
 <h1>PROGETTO CATAN:</h1>
@@ -33,8 +32,6 @@ costruendo, commerciando e usando carte sviluppo.
 <ul>
 <li>Tessere esagonali: formano l’isola di Catan, ogni tessera produce una risorsa legno, argilla, grano, lana, minerale).</li>
  <li>Numeri da 2 a 12: ogni tessera ha un numero, tranne il deserto.</li>
- <li>Carte risorsa</li>
- <li>Carte sviluppo</li>
  <li>Strade, insediamenti, città (in plastica o legno)</li>
  <li>Il ladro: pedina speciale</li>
  </ul>
@@ -49,13 +46,6 @@ costruendo, commerciando e usando carte sviluppo.
   </ul>
   </li>
   <li>
-  <strong>Commercio</strong>
-  <ul>
-  <li>Puoi scambiare risorse con gli altri giocatori.</li>
-  <li>Puoi anche commerciare con la banca.</li>
-  </ul>
-  </li>
-   <li>
   <strong>Costruzione</strong>
   <ul>
   <li>Puoi usare le risorse per costruire:</li>
@@ -72,9 +62,6 @@ costruendo, commerciando e usando carte sviluppo.
 <ul>
 <li>Insediamento = 1 punto</li>
 <li>Città = 2 punti</li>
-<li>Carta sviluppo con punto vittoria = 1 punto</li>
-<li>Strada più lunga = 2 punti (almeno 5 strade collegate)</li>
-<li>Esercito più grande = 2 punti (almeno 3 carte cavaliere giocate)</li>
 </ul>
 </body>
 </html>

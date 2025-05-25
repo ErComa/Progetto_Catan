@@ -55,8 +55,8 @@ int main()
             {
                
                     event_handler(window, giocatore1, giocatore2);
-                    //giocatore1->stampa_numeri();
-                   // giocatore1->stampa_risorse();
+                    giocatore1->stampa_numeri();
+                    //giocatore1->stampa_risorse();
 				
             }
         }

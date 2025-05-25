@@ -63,21 +63,57 @@ void utente::aggiungi_risorsa(int a) {
 }
 
 void utente::aggiungi_numero(int a) {
-	numeri_.push_back(a);
+	bool trovato = false;
+	for (int i = 0; i < numeri_.size(); ++i) {
+		if (numeri_[i] == a) {
+			trovato = true;
+		}
+	}
+	if(!trovato){ numeri_.push_back(a); }
 }
-
-void utente::aggiunta_risorsa(vector<int> numeri2, vector<int> risorse2) {
-	int a;
-	for (int i = 0; i < numeri2.size(); ++i) {
-		cout << "funge diobestia";
-		if(i<numeri_.size()){
-			if (numeri_[i] == numeri2[i]) {
-				cout << "risorsa aggiunta: " << i << endl;
-				risorse[risorse2[i]]++;
+int identifica_risorsa(int a) {
+	cout << "identificazione risorsa " << endl;
+	for (int i = 0; i < 19; ++i) {
+		if (a == colori[i]) {
+			return tipo[i];
+		}
+	}
+}
+void utente::aggiunta_risorsa2(vector<int> numeri2) {
+	int b;
+	for (int i = 0; i < numeri2.size(); i++) {
+		for (int x = 0; x < numeri_.size(); x++) {
+			if (numeri2[i] == numeri_[x]) {
+				b = identifica_risorsa(numeri2[i]);
+				switch (b) {
+				case 1: // legno
+					risorse[1]++;
+					cout << "Aggiunta legno" << endl;
+					break;
+				case 2: // mattoni
+					risorse[2]++;
+					cout << "Aggiunta mattoni" << endl;
+					break;
+				case 3: // lana
+					risorse[3]++;
+					cout << "Aggiunta lana" << endl;
+					break;
+				case 4: // minerale
+					cout << "Aggiunta minerale" << endl;
+					risorse[4]++;
+					break;
+				case 5: // grano
+					cout << "Aggiunta grano" << endl;
+					risorse[5]++;
+					break;
+				case 6: // deserto, non aggiunge risorsa
+					break;
+				default:
+					cout << "Errore nell'aggiunta delle risorse" << endl;
+				}
 			}
 		}
 	}
-	
 }
 void utente::stampa_risorse() {
 	cout << "Risorsa ";
@@ -88,9 +124,11 @@ void utente::stampa_risorse() {
 }
 
 void utente::stampa_numeri() {
+	cout << "Numero ";
 	for (int i = 0; i < numeri_.size(); ++i) {
-		cout << "Numero " << i << ": " << numeri_[i] << endl;
+		cout << " "<< numeri_[i];
 	}
+	cout << endl;
 }
 
 /*

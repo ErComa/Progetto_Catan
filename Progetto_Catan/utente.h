@@ -26,7 +26,7 @@ public:
 	bool piazza_citta(int, int);
 	void aggiungi_risorsa(int);
 	void aggiungi_numero(int);
-	void aggiunta_risorsa(std::vector<int>, std::vector<int>);
+	void aggiunta_risorsa2(std::vector<int>);
 	void stampa_risorse();
 	void stampa_numeri();
 };

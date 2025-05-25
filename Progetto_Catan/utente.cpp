@@ -7,11 +7,11 @@
 #include <vector>
 using namespace std;
 utente::utente(){
-	insediamenti = 0;
+	insediamenti = 1;
 	citta = 0;
 	strade = 2;
 	for (int i = 0; i < 6; ++i) {
-		risorse[i] = 200;
+		risorse[i] = 6;
 	}
 
 }
@@ -20,7 +20,7 @@ int utente::get_citta() { return citta; }
 int utente::get_strade() { return strade; }
 int utente::get_risorse(int a) { return risorse[a]; }
 bool utente::piazza_insediamenti(int i, int j) {
-	if (insediamenti > 0 && iniziale >0 ) {
+	if (insediamenti > 0 && iniziale >0 && piazzamento_insediamenti(i, j)) {
 		insediamenti--;
 		return true;
 	}
@@ -36,7 +36,7 @@ bool utente::piazza_insediamenti(int i, int j) {
 	}
 }
 bool utente::piazza_strada(int i, int j) {
-	if (strade > 0 && iniziale > 69) {
+	if (strade > 0 && iniziale > 0 && piazzamento_strade(i, j)) {
 		strade--;
 		return true;
 	}
@@ -49,9 +49,10 @@ bool utente::piazza_strada(int i, int j) {
 	
 }
 bool utente::piazza_citta(int i, int j) {
-	if (risorse[4] > 3 && risorse[5] > 2) {
+	if (risorse[4] > 3 && risorse[5] > 2&&piazzamento_citta(i,j)) {
 		risorse[4]-=3;
 		risorse[5]-=2;
+		board[i][j]->set_tipo('c');
 		return true;
 	}
 	else { return false; }
@@ -75,6 +76,19 @@ void utente::aggiunta_risorsa(vector<int> numeri2, vector<int> risorse2) {
 		}
 	}
 	
+}
+void utente::stampa_risorse() {
+	cout << "Risorsa ";
+	for (int i = 0; i < 6; ++i) {
+		cout<< i << ": " << risorse[i]<<" ";
+	}
+	cout << endl;
+}
+
+void utente::stampa_numeri() {
+	for (int i = 0; i < numeri_.size(); ++i) {
+		cout << "Numero " << i << ": " << numeri_[i] << endl;
+	}
 }
 
 /*

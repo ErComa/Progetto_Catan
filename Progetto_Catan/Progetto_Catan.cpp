@@ -7,11 +7,13 @@
 #include "utente.h"
 using namespace std;
 sf::RenderWindow window(sf::VideoMode({ 800, 800 }), "non so a cosa serve sta stringa ma se la tolgo non compila quindi la lasciamo qua");
+
 int stato_turno;
 int iniziale;
 char turno;
 int main()
 {
+    window.setFramerateLimit(60);
     stato_turno = 0;
     iniziale = 6;
     turno = 'r';
@@ -53,7 +55,8 @@ int main()
             {
                
                     event_handler(window, giocatore1, giocatore2);
-                
+                    giocatore1->stampa_numeri();
+                    giocatore1->stampa_risorse();
 				
             }
         }

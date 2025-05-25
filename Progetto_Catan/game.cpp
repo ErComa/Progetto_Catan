@@ -132,30 +132,28 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
 	int risorsa = coso[2];
 	int i = coso[0];
 	int j = coso[1];
-    
         switch (iniziale) {
         case 6:
-            
             if (giocatore1->piazza_insediamenti(i, j)) {
 				board[i][j]->set_player(turno);
                 iniziale--;
             }
             break;
 		case 5:
-            if (giocatore2->piazza_strada(i, j)) {
+            if (giocatore1->piazza_strada(i, j)) {
                 board[i][j]->set_player(turno);
 				iniziale--;
             }
             break;
         case 4:
-            if (giocatore2->piazza_strada(i, j)) {
+            if (giocatore1->piazza_strada(i, j)) {
                 board[i][j]->set_player(turno);
                 iniziale--;
                 turno = 'b';
             }
             break;
 		case 3:
-            if (giocatore1->piazza_insediamenti(i, j)) {
+            if (giocatore2->piazza_insediamenti(i, j)) {
                 board[i][j]->set_player(turno);
                 iniziale--;
             }
@@ -185,6 +183,7 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
         if(iniziale==0){
             switch (turno) {
             case 'r':
+
                 if (giocatore1->piazza_insediamenti(i, j) || giocatore1->piazza_strada(i, j) || giocatore1->piazza_citta(i, j)) {
                     if (giocatore1->piazza_insediamenti(i, j)) { aggiungi_colore(i, j, giocatore1, giocatore2); }
                     board[i][j]->set_player(turno);
@@ -192,7 +191,7 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
                 }
                 break;
             case 'b':
-                if (giocatore1->piazza_insediamenti(i, j) || giocatore1->piazza_strada(i, j) || giocatore1->piazza_citta(i, j)) {
+                if (giocatore2->piazza_insediamenti(i, j) || giocatore2->piazza_strada(i, j) || giocatore2->piazza_citta(i, j)) {
                     board[i][j]->set_player(turno);
                     turno = 'r';
                     aggiungi_risorse(giocatore1, giocatore2);

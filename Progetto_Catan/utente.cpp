@@ -11,7 +11,7 @@ utente::utente(){
 	citta = 0;
 	strade = 2;
 	for (int i = 0; i < 6; ++i) {
-		risorse[i] = 6;
+		risorse[i] = 200;
 	}
 
 }
@@ -69,8 +69,10 @@ void utente::aggiungi_numero(int a) {
 void utente::aggiunta_risorsa(vector<int> numeri2, vector<int> risorse2) {
 	int a;
 	for (int i = 0; i < numeri2.size(); ++i) {
+		cout << "funge diobestia";
 		if(i<numeri_.size()){
 			if (numeri_[i] == numeri2[i]) {
+				cout << "risorsa aggiunta: " << i << endl;
 				risorse[risorse2[i]]++;
 			}
 		}

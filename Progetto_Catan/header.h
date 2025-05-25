@@ -35,7 +35,7 @@ protected:
 	bool stato_bioma;
 public:
 	coso(char a, int b) : stato(a), colore(b), player('o'),tipo('v'), stato_bioma(false) {}
-	coso(int a, bool b) : colore(a), stato_bioma(b) {}
+	coso(int a, bool b) : colore(a), stato_bioma(b), stato('e') {}
 	char get_stato() { return stato; }
 	int get_colore() { return colore; }
 	void set_colore(int a) { colore = a; }

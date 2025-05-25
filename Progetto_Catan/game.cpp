@@ -29,29 +29,32 @@ vector<int> gioco(int colore) {
     lato: 1
 	esagono: 2
     */
-    for (int r = 0; r < 11; ++r) {
-        for (int c = 0; c < 21; ++c) {
-            if (board[r][c] != nullptr && board[r][c]->get_colore() == colore) {
-                i = r;
-				j = c;
-				if (board[r][c]->get_stato() == 'v') {
-					type= 3;
-				}
-				else {
-					type = 1;
-				}
+    if (colore != 0) {
+        for (int r = 0; r < 11; ++r) {
+            for (int c = 0; c < 21; ++c) {
+                if (board[r][c] != nullptr && board[r][c]->get_colore() == colore) {
+                    i = r;
+                    j = c;
+                    if (board[r][c]->get_stato() == 'v') {
+                        type = 3;
+                    }
+                    else {
+                        type = 1;
+                    }
+                }
+            }
+        }
+        for (int r = 0; r < 5; ++r) {
+            for (int c = 0; c < 11; ++c) {
+                if (mappa[r][c] != nullptr && mappa[r][c]->get_colore() == colore) {
+                    i = r;
+                    j = c;
+                    type = 2;
+                }
             }
         }
     }
-    for (int r = 0; r < 5; ++r) {
-        for (int c = 0; c < 11; ++c) {
-            if (mappa[r][c] != nullptr && mappa[r][c]->get_colore() == colore) {
-                i = r;
-                j = c;
-				type = 2;
-            }
-        }
-    }
+    else { type = 0; }
 	risorsa = { i, j, type };
 	return risorsa;
 }
@@ -72,10 +75,6 @@ int Tiro_dadi() {
     return a;
 }
 
-void aggiungi_risorse() {
-
-}
-
 
 void aggiungi_risorse(utente* giocatore1, utente* giocatore2) {
 	int numero_estratto = Tiro_dadi();
@@ -94,36 +93,31 @@ void aggiungi_risorse(utente* giocatore1, utente* giocatore2) {
                 }
             }
         }
+        giocatore1->aggiunta_risorsa(numeri, risorse);
+        giocatore2->aggiunta_risorsa(numeri, risorse);
     }
-	giocatore1->aggiunta_risorsa(numeri, risorse);
-    giocatore2->aggiunta_risorsa(numeri, risorse);
 }
 //1= red 2= blue
 void aggiungi_colore(int i,int j, utente* giocatore1, utente* giocatore2) {
     int a, b;
     a = i+1;
     b = j;
-    if (board[i][j] != nullptr) { if (board[i][j]->get_stato() == 'e') {
-        if (turno == 'r') { giocatore1->aggiungi_numero(board[i][j]->get_colore()); }
-        else { giocatore2->aggiungi_numero(board[i][j]->get_colore()); }
-    } 
-    }
+    if (board[a][b] != nullptr) { if (board[a][b]->get_stato() == 'e') {if (turno == 'r') {giocatore1->aggiungi_numero(board[a][b]->get_colore()); } else {giocatore2->aggiungi_numero(board[a][b]->get_colore()); } } }
     a = i - 1;
     b = j +2;
-    if (board[i][j] != nullptr) {
-        if (board[i][j]->get_stato() == 'e') {
-            if (turno == 'r') { giocatore1->aggiungi_numero(board[i][j]->get_colore()); }
-            else { giocatore2->aggiungi_numero(board[i][j]->get_colore()); }
-        }
-    }
+    if (board[a][b] != nullptr) { if (board[a][b]->get_stato() == 'e') {if (turno == 'r') {giocatore1->aggiungi_numero(board[a][b]->get_colore()); } else {giocatore2->aggiungi_numero(board[a][b]->get_colore()); } } }
     a = i - 1;
     b = j - 2;
-    if (board[i][j] != nullptr) {
-        if (board[i][j]->get_stato() == 'e') {
-            if (turno == 'r') { giocatore1->aggiungi_numero(board[i][j]->get_colore()); }
-            else { giocatore2->aggiungi_numero(board[i][j]->get_colore()); }
-        }
-    }
+    if (board[a][b] != nullptr) { if (board[a][b]->get_stato() == 'e') {if (turno == 'r') {giocatore1->aggiungi_numero(board[a][b]->get_colore()); } else {giocatore2->aggiungi_numero(board[a][b]->get_colore()); } } }
+    a = i - 1;
+    b = j;
+    if (board[a][b] != nullptr) { if (board[a][b]->get_stato() == 'e') {if (turno == 'r') {giocatore1->aggiungi_numero(board[a][b]->get_colore()); } else {giocatore2->aggiungi_numero(board[a][b]->get_colore()); } } }
+    a = i + 1;
+    b = j + 2;
+    if (board[a][b] != nullptr) { if (board[a][b]->get_stato() == 'e') {if (turno == 'r') {giocatore1->aggiungi_numero(board[a][b]->get_colore()); } else {giocatore2->aggiungi_numero(board[a][b]->get_colore()); } } }
+    a = i + 1;
+    b = j - 2;
+    if (board[a][b] != nullptr) { if (board[a][b]->get_stato() == 'e') {if (turno == 'r') {giocatore1->aggiungi_numero(board[a][b]->get_colore()); } else {giocatore2->aggiungi_numero(board[a][b]->get_colore()); } } }
 }
 
 void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocatore2) {
@@ -132,17 +126,19 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
 	int risorsa = coso[2];
 	int i = coso[0];
 	int j = coso[1];
+    if (coso[2] != 0) {
         switch (iniziale) {
         case 6:
             if (giocatore1->piazza_insediamenti(i, j)) {
-				board[i][j]->set_player(turno);
+                board[i][j]->set_player(turno);
+                aggiungi_colore(i, j, giocatore1, giocatore2);
                 iniziale--;
             }
             break;
-		case 5:
+        case 5:
             if (giocatore1->piazza_strada(i, j)) {
                 board[i][j]->set_player(turno);
-				iniziale--;
+                iniziale--;
             }
             break;
         case 4:
@@ -152,9 +148,10 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
                 turno = 'b';
             }
             break;
-		case 3:
+        case 3:
             if (giocatore2->piazza_insediamenti(i, j)) {
                 board[i][j]->set_player(turno);
+                aggiungi_colore(i, j, giocatore1, giocatore2);
                 iniziale--;
             }
             break;
@@ -164,7 +161,7 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
                 iniziale--;
             }
             break;
-		case 1:
+        case 1:
             if (giocatore2->piazza_strada(i, j)) {
                 board[i][j]->set_player(turno);
                 iniziale--;
@@ -177,10 +174,10 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
         }
         /*
         1: generazione risorse
-		2: piazzamento edifici
-		3: piazzamento strade
+        2: piazzamento edifici
+        3: piazzamento strade
         */
-        if(iniziale==0){
+        if (iniziale == 0) {
             switch (turno) {
             case 'r':
 
@@ -192,12 +189,13 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
                 break;
             case 'b':
                 if (giocatore2->piazza_insediamenti(i, j) || giocatore2->piazza_strada(i, j) || giocatore2->piazza_citta(i, j)) {
+                    if (giocatore2->piazza_insediamenti(i, j)) { aggiungi_colore(i, j, giocatore1, giocatore2); }
                     board[i][j]->set_player(turno);
                     turno = 'r';
                     aggiungi_risorse(giocatore1, giocatore2);
                 }
                 break;
             }
+        }
     }
-
 }

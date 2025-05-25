@@ -228,3 +228,84 @@ void print_vertici(sf::RenderWindow& window) {
         }
     }
 }
+
+void print_numeri(sf::RenderWindow& window) {
+    int a, x, y, counter;
+    sf::Texture due_texture;
+    due_texture.loadFromFile("./media/2.png");
+    sf::Sprite due_sprite(due_texture);
+	sf::Texture tre_texture;
+	tre_texture.loadFromFile("./media/3.png");
+	sf::Sprite tre_sprite(tre_texture);
+	sf::Texture quattro_texture;
+	quattro_texture.loadFromFile("./media/4.png");
+	sf::Sprite quattro_sprite(quattro_texture);
+	sf::Texture cinque_texture;
+	cinque_texture.loadFromFile("./media/5.png");
+	sf::Sprite cinque_sprite(cinque_texture);
+	sf::Texture sei_texture;
+	sei_texture.loadFromFile("./media/6.png");
+	sf::Sprite sei_sprite(sei_texture);
+	sf::Texture otto_texture;
+	otto_texture.loadFromFile("./media/8.png");
+	sf::Sprite otto_sprite(otto_texture);
+	sf::Texture nove_texture;
+	nove_texture.loadFromFile("./media/9.png");
+	sf::Sprite nove_sprite(nove_texture);
+    // deltay =121 y inizale 58 + y
+    // deltax = 130 x inziale 25 +x
+    for (int i = 0; i < 5; ++i) {
+		counter = 0;
+        for (int j = 0; j < 10; ++j) {
+            if (griglia_biomi[i][j] == 0) {
+                if (i == 0 || i == 4) { x = 260 + (counter * 165); }
+                if (i == 1 || i == 3) { x = 180 + (counter * 165); }
+                if (i == 2) { x = 100 + (counter * 165); }
+                cout << counter << endl;
+				y = 145 + (i * 121);
+				a = mappa[i][j]->get_numero();
+                switch (a) {
+				case 2:
+					due_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(due_sprite);
+					break;
+				case 3:
+					tre_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(tre_sprite);
+					break;
+				case 4:
+					quattro_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(quattro_sprite);
+					break;
+				case 5:
+					cinque_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(cinque_sprite);
+					break;
+				case 6:
+					sei_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(sei_sprite);
+					break;
+				case 8:
+					otto_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(otto_sprite);
+					break;
+				case 9:
+					nove_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(nove_sprite);
+					break;
+                }
+                counter++;
+			}
+           
+            }
+            
+        }
+    }
+
+/*
+{-1,-1,0,-1,0,-1,0,-1,-1,-1},
+{-1,0,-1,0,-1,0,-1,0,-1,-1},
+{0,-1,0,-1,0,-1,0,-1,0,-1},
+{-1,0,-1,0,-1,0,-1,0,-1,-1},
+{-1,-1,0,-1,0,-1,0,-1,-1,-1},
+ */

@@ -17,6 +17,7 @@ int id(sf::RenderWindow& window);
 void overlay(sf::RenderWindow& window);
 void print_vertici(sf::RenderWindow& window);
 void event_handler(sf::RenderWindow& window,utente* giocatore1,utente* giocatore2);
+void print_numeri(sf::RenderWindow& window);
 
 extern char griglia[righe][colonne];
 extern int colori[19];

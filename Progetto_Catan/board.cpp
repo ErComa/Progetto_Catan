@@ -124,5 +124,6 @@ void print(sf::RenderWindow& window) {
     overlay(window);
     window.draw(board_punti_sprite);
     print_vertici(window);
+	print_numeri(window);
     window.display();
 }

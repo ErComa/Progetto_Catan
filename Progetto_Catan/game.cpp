@@ -22,10 +22,8 @@ int id(sf::RenderWindow& window) {
 }
 
 vector<int> gioco(int colore) {
-    int i, j, type;
-    i = 0;
-    j = 0;
-    type =0;
+    int i, j;
+    int type;
 	vector<int> risorsa;
     /*
     lato: 1
@@ -70,7 +68,6 @@ int Tiro_dadi() {
         cout << "Hai tirato un 7! nessuna risorsa viene prodotta " << endl;
         cout << "Clicca l'esagono su cui vuoi spostare il ladro" << endl; // per coma: meccanismo ladro
         //ladro();
-        return a;
     }
     else {
         cout << "Tiro di dadi effettuato: la somma dei dadi e': " << a << endl;
@@ -79,25 +76,23 @@ int Tiro_dadi() {
 }
 
 
-void aggiungi_risorse1(utente* giocatore1, utente* giocatore2) {
+void aggiungi_risorse(utente* giocatore1, utente* giocatore2) {
 	int numero_estratto = Tiro_dadi();
+    int tipo_risorsa;
 	vector<int> numeri;
+	vector<int> risorse;
     if (numero_estratto != 7) {
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < 10; ++j) {
                 if (mappa[i][j] != nullptr) {
                     if (mappa[i][j]->get_numero() == numero_estratto) {
-                        numeri.push_back(mappa[i][j]->get_colore());
-                        cout << "Numeri vettore  ";
-                        for (int i = 0; i < numeri.size(); ++i) {
-                            cout << " " << numeri[i];
-                        }
-                        cout << endl;
+                        numeri.push_back(mappa[i][j]->get_numero());
+                        risorse.push_back(mappa[i][j]->get_type());
+
                     }
                 }
             }
         }
-        
         giocatore1->aggiunta_risorsa2(numeri);
         giocatore2->aggiunta_risorsa2(numeri);
     }
@@ -197,8 +192,8 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
                     if (giocatore2->piazza_insediamenti(i, j)) { aggiungi_colore(i, j, giocatore1, giocatore2); }
                     board[i][j]->set_player(turno);
                     turno = 'r';
+                    aggiungi_risorse(giocatore1, giocatore2);
                 }
-                aggiungi_risorse1(giocatore1, giocatore2);
                 break;
             }
         }

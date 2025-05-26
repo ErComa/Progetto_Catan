@@ -20,6 +20,7 @@ int id(sf::RenderWindow& window) {
 	sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
 	int a = pixelColor.a;
     if (a >= 212) { a--; }
+    cout << a;
 	return a;	
 }
 
@@ -63,7 +64,8 @@ vector<int> gioco(int colore) {
             }
         }
     }
-    else { type = 0; }
+    if (colore == 150 ) { type = 4; }//pulsante turno
+    
 	risorsa = { i, j, type };
 	return risorsa;
 }
@@ -217,7 +219,6 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
         }
     }
     else {
-        cout << "test " << endl;
         if (type == 2) {
             for (int r = 0; r < 5; ++r) {
                 for (int c = 0; c < 11; ++c) {
@@ -231,13 +232,20 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
 							oldy = r;
                             current_ladro = colore;
                             placing = false;
-                            cout << "test 2" << endl;
 
                         }
                     }
                 }
             }
         }
-
     }
+	if (type == 4&&iniziale==0) { // pulsante turno
+		if (turno == 'r') {
+			turno = 'b';
+		}
+		else {
+			turno = 'r';
+			aggiungi_risorse(giocatore1, giocatore2);
+		}
+	}
 }

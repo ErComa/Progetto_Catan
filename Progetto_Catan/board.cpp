@@ -112,7 +112,7 @@ void inizializzazione_board() {
     std::cout << "board inizializzata" << std::endl;
 }
 
-void print(sf::RenderWindow& window) {
+void print(sf::RenderWindow& window, utente* giocatore1, utente* giocatore2){
     sf::Texture board_punti_texture;
     board_punti_texture.loadFromFile("./media/board_punti.png");
     sf::Texture board_overlay_texture;
@@ -125,5 +125,7 @@ void print(sf::RenderWindow& window) {
     window.draw(board_punti_sprite);
     print_vertici(window);
 	print_numeri(window);
+	giocatore1->stampa_punteggio(window, 1);  
+    giocatore2->stampa_punteggio(window, 2);
     window.display();
 }

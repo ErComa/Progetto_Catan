@@ -100,14 +100,12 @@ void aggiungi_risorse(utente* giocatore1, utente* giocatore2) {
 	int numero_estratto = Tiro_dadi();
     int tipo_risorsa;
 	vector<int> numeri;
-	vector<int> risorse;
     if (numero_estratto != 7) {
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < 10; ++j) {
                 if (mappa[i][j] != nullptr) {
                     if (mappa[i][j]->get_numero() == numero_estratto && mappa[i][j]->get_colore()!=current_ladro) {
-                        numeri.push_back(mappa[i][j]->get_numero());
-                        risorse.push_back(mappa[i][j]->get_type());
+                        numeri.push_back(mappa[i][j]->get_colore());
 
                     }
                 }

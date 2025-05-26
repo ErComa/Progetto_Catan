@@ -30,6 +30,13 @@ int main()
    
     while (window.isOpen())
     {
+		if (giocatore1->controllo_vittoria() || giocatore2->controllo_vittoria())
+		{
+			window.close();
+			if (giocatore1->controllo_vittoria()) { cout << "Giocatore 1 ha vinto!" << endl; }
+			else { cout << "Giocatore 2 ha vinto!" << endl; }
+			break;
+		}
         while (const std::optional event = window.pollEvent())
         {
             if (event->is<sf::Event::Closed>()) { window.close(); }

@@ -11,10 +11,8 @@ utente::utente() {
 	strade = 2;
 	punteggio = 0;
 	for (int i = 0; i < 6; ++i) {
-		risorse[i] = 200;
+		risorse[i] = 10;
 	}
-
-
 }
 int utente::get_insediamenti() { return insediamenti; }
 int utente::get_citta() { return citta; }
@@ -85,38 +83,25 @@ void utente::aggiungi_risorsa(int a) {
 	}
 
 	void utente::aggiunta_risorsa2(vector<int> numeri2) {
-		cout << "Aggiunta risorse" << endl;
-		stampa_numeri();
-		cout << "Numero2 ";
-		for (int i = 0; i < numeri2.size(); ++i) {
-			cout << " " << numeri_[i];
-		}
-		cout << endl;
 		int b;
 		for (int i = 0; i < numeri2.size(); i++) {
 			for (int x = 0; x < numeri_.size(); x++) {
 				if (numeri2[i] == numeri_[x]) {
-					cout << "diocane";
 					b = identifica_risorsa(numeri2[i]);
 					switch (b) {
 					case 1: // legno
 						risorse[1]++;
-						cout << "Aggiunta legno" << endl;
 						break;
 					case 2: // mattoni
 						risorse[2]++;
-						cout << "Aggiunta mattoni" << endl;
 						break;
 					case 3: // lana
 						risorse[3]++;
-						cout << "Aggiunta lana" << endl;
 						break;
 					case 4: // minerale
-						cout << "Aggiunta minerale" << endl;
 						risorse[4]++;
 						break;
 					case 5: // grano
-						cout << "Aggiunta grano" << endl;
 						risorse[5]++;
 						break;
 					case 6: // deserto, non aggiunge risorsa

@@ -34,4 +34,8 @@ public:
     void stampa_punteggio(sf::RenderWindow& window, int);
 	void stampa_risorse_utente(sf::RenderWindow& window, int);
 	void stampa_numeri();
+	bool controllo_vittoria() {
+		if (punteggio >= 15) { return 1; }
+		else { return 0; }
+	}
 };

@@ -8,6 +8,7 @@
 #include <vector>
 using namespace std;
 bool placing;
+int oldy, oldx, current_ladro;
 vector<int> gioco(int);
 
 int id(sf::RenderWindow& window) {
@@ -71,8 +72,7 @@ int Tiro_dadi() {
     srand(time(NULL));
     int dado1 = (std::rand() % 6) + 1; // valore tra 1 e 6
     int dado2 = (std::rand() % 6) + 1; // valore tra 1 e 6
-    //a = dado1 + dado2;
-    a = 7;
+    a = dado1 + dado2;
     if (a == 7) {
         cout << "Hai tirato un 7! nessuna risorsa viene prodotta " << endl;
         cout << "Clicca l'esagono su cui vuoi spostare il ladro" << endl; // per coma: meccanismo ladro
@@ -95,7 +95,7 @@ void aggiungi_risorse(utente* giocatore1, utente* giocatore2) {
         for (int i = 0; i < 5; ++i) {
             for (int j = 0; j < 10; ++j) {
                 if (mappa[i][j] != nullptr) {
-                    if (mappa[i][j]->get_numero() == numero_estratto) {
+                    if (mappa[i][j]->get_numero() == numero_estratto && mappa[i][j]->get_colore()!=current_ladro) {
                         numeri.push_back(mappa[i][j]->get_numero());
                         risorse.push_back(mappa[i][j]->get_type());
 
@@ -224,6 +224,12 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
                     if (mappa[r][c] != nullptr) {
                         if (mappa[r][c]->get_colore() == colore) {
                             mappa[r][c]->set_ladro(true);
+                            if (oldx != 0 && oldy != 0) {
+                                mappa[oldy][oldx]->set_ladro(false); // rimuove il ladro dal vecchio esagono
+                            }
+							oldx = c;
+							oldy = r;
+                            current_ladro = colore;
                             placing = false;
                             cout << "test 2" << endl;
 

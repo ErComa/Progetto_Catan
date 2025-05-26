@@ -6,7 +6,14 @@
 #include "bioma.h"
 #include "utente.h"
 using namespace std;
-sf::RenderWindow window(sf::VideoMode({ 1100, 800 }), "non so a cosa serve sta stringa ma se la tolgo non compila quindi la lasciamo qua");
+utente::utente(){
+	insediamenti = 1;
+	citta = 0;
+	strade = 2;
+	punteggio = 0;
+	for (int i = 0; i < 6; ++i) {
+		risorse[i] = 200;
+	}
 
 int stato_turno;
 int iniziale;
@@ -68,3 +75,50 @@ int main()
         print(window, giocatore1, giocatore2);
     }
 }
+
+void utente::stampa_punteggio(sf::RenderWindow& window, int a) {
+	sf::Font font;
+	font.openFromFile("./media/arial.ttf");
+	sf::Text text(font);
+	text.setString(std::to_string(punteggio));
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::White);
+	if (a == 1) {
+		text.setPosition(sf::Vector2f(988, 118));
+	}
+	else {
+		text.setPosition(sf::Vector2f(992, 385));
+	}
+	window.draw(text);
+}
+
+void utente::stampa_risorse_utente(sf::RenderWindow& window, int a) {
+	string risorse_string = "Risorse: ";
+	int y;
+	int x[5] = { 988, 988, 988, 988, 988 };
+	sf::Font font;
+	font.openFromFile("./media/arial.ttf");
+	sf::Text text(font);
+	text.setCharacterSize(24);
+	text.setFillColor(sf::Color::White);
+	for (int i = 0; i < 6; ++i) {
+		string risorse_string = std::to_string(punteggio);
+		text.setString(risorse_string);
+		text.setPosition(sf::Vector2f(x[i], y));
+	}
+	text.setPosition(sf::Vector2f(988, 158));
+	window.draw(text);
+}
+/*
+biomi: 1-5 biomi normali e 6 deserto, paralleli al tipo di risorsa
+1: legno verdescuro
+2: mattoni arancione
+3: lana verdechiaro
+4: minerale grigio
+5: grano giallo qualcosa del genere
+6: deserto
+Strade (richiedono 1 mattone e 1 legno).
+Villaggi (richiedono 1 mattone, 1 legno, 1 lana e 1 grano).
+Città (richiedono 3 minerali e 2 grani, e sostituiscono un villaggio).
+Carte sviluppo (richiedono 1 minerale, 1 lana e 1 grano).
+*/

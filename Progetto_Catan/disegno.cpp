@@ -7,7 +7,6 @@
 #include "utente.h"
 #include <cstdlib>
 #include <ctime>  
-
 using namespace std;
 
 void overlay(sf::RenderWindow& window) {
@@ -336,10 +335,3 @@ void print_numeri(sf::RenderWindow& window) {
     }
 }
 
-/*
-{-1,-1,0,-1,0,-1,0,-1,-1,-1},
-{-1,0,-1,0,-1,0,-1,0,-1,-1},
-{0,-1,0,-1,0,-1,0,-1,0,-1},
-{-1,0,-1,0,-1,0,-1,0,-1,-1},
-{-1,-1,0,-1,0,-1,0,-1,-1,-1},
- */

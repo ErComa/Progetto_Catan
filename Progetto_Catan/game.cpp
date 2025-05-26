@@ -24,6 +24,9 @@ int id(sf::RenderWindow& window) {
 vector<int> gioco(int colore) {
     int i, j;
     int type;
+    i = 0;
+    j = 0;
+    type = 0;
 	vector<int> risorsa;
     /*
     lato: 1

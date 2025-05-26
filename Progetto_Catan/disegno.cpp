@@ -251,18 +251,30 @@ void print_numeri(sf::RenderWindow& window) {
 	sf::Sprite otto_sprite(otto_texture);
 	sf::Texture nove_texture;
 	nove_texture.loadFromFile("./media/9.png");
-	sf::Sprite nove_sprite(nove_texture);
+    sf::Sprite nove_sprite(nove_texture);
+    sf::Texture dieci_texture;
+    dieci_texture.loadFromFile("./media/10.png");
+    sf::Sprite dieci_sprite(dieci_texture);
+    sf::Texture undici_texture;
+    undici_texture.loadFromFile("./media/11.png");
+    sf::Sprite undici_sprite(undici_texture);
+    sf::Texture dodici_texture;
+    dodici_texture.loadFromFile("./media/12.png");
+    sf::Sprite dodici_sprite(dodici_texture);
+
+
+
     // deltay =121 y inizale 58 + y
     // deltax = 130 x inziale 25 +x
     for (int i = 0; i < 5; ++i) {
 		counter = 0;
         for (int j = 0; j < 10; ++j) {
             if (griglia_biomi[i][j] == 0) {
-                if (i == 0 || i == 4) { x = 260 + (counter * 165); }
-                if (i == 1 || i == 3) { x = 180 + (counter * 165); }
-                if (i == 2) { x = 100 + (counter * 165); }
-                cout << counter << endl;
-				y = 145 + (i * 121);
+                if (i == 0 || i == 4) { x = 235 + (counter * 140); }//260
+                if (i == 1 || i == 3) { x = 165 + (counter * 140); }//180
+                if (i == 2) { x = 95 + (counter * 140); }
+                cout << counter <<" x: "<<x<< endl;
+				y = 150 + (i * 121);
 				a = mappa[i][j]->get_numero();
                 switch (a) {
 				case 2:
@@ -293,13 +305,26 @@ void print_numeri(sf::RenderWindow& window) {
 					nove_sprite.setPosition(sf::Vector2f(x, y));
 					window.draw(nove_sprite);
 					break;
+				case 10:
+					dieci_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(dieci_sprite);
+					break;
+				case 11:
+					undici_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(undici_sprite);
+					break;
+				case 12:
+					dodici_sprite.setPosition(sf::Vector2f(x, y));
+					window.draw(dodici_sprite);
+					break;
                 }
                 counter++;
 			}
            
             }
-            
+        cout << "fine riga " << endl;
         }
+    cout << "fine chiamata funzione";
     }
 
 /*

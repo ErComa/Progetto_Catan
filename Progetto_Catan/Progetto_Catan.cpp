@@ -13,7 +13,7 @@ int iniziale;
 char turno;
 int main()
 {
-    window.setFramerateLimit(60);
+    window.setFramerateLimit(20);
     stato_turno = 0;
     iniziale = 6;
     turno = 'r';

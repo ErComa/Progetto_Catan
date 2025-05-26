@@ -127,5 +127,8 @@ void print(sf::RenderWindow& window, utente* giocatore1, utente* giocatore2){
 	print_numeri(window);
 	giocatore1->stampa_punteggio(window, 1);  
     giocatore2->stampa_punteggio(window, 2);
+    giocatore1->stampa_risorse_utente(window, 1);
+    giocatore2->stampa_risorse_utente(window, 2);
+
     window.display();
 }

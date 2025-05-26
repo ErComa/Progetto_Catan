@@ -65,6 +65,6 @@ int main()
             }
         }
         window.clear();
-        print(window);
+        print(window, giocatore1, giocatore2);
     }
 }

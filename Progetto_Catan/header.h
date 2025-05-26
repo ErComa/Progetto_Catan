@@ -27,6 +27,8 @@ extern char turno;
 extern int stato_turno;
 extern int iniziale;
 extern bool placing;
+extern int oldx, oldy, current_ladro;
+
 
 class coso {
 protected:

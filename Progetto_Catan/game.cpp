@@ -10,18 +10,26 @@ using namespace std;
 bool placing;
 int oldy, oldx, current_ladro;
 vector<int> gioco(int);
+sf::Texture pulsante;
+sf::Sprite pulsante_sprite(pulsante);
+void inizializzazione_pulsante(sf::RenderWindow& window) {
+    pulsante.loadFromFile("./media/pulsante.png");
+}
+
 
 int id(sf::RenderWindow& window) {
     sf::Vector2i localPosition = sf::Mouse::getPosition(window);
     int x = localPosition.x;
     int y = localPosition.y;
-	sf::Image image;
-	image.loadFromFile("./media/board.png");
-	sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
-	int a = pixelColor.a;
-    if (a >= 212) { a--; }
-    cout << a;
-	return a;	
+    if (x >= 0 && x <= 1100 && y >= 0 && y <= 800) {
+        sf::Image image;
+        image.loadFromFile("./media/board.png");
+        sf::Color pixelColor = image.getPixel(sf::Vector2u(x, y));
+        int a = pixelColor.a;
+        if (a >= 212) { a--; }
+        return a;
+    }
+    else { return -1; }
 }
 
 vector<int> gioco(int colore) {
@@ -134,6 +142,9 @@ void aggiungi_colore(int i,int j, utente* giocatore1, utente* giocatore2) {
 
 void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocatore2) {
     int colore = id(window);
+    if (colore == -1) {
+        return;
+    }
     vector<int> coso = gioco(colore);
     int risorsa = coso[2];
     int i = coso[0];
@@ -192,7 +203,6 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
             3: piazzamento strade
             */
             if (iniziale == 0) {
-                cout << "qui " << endl;
                 switch (turno) {
                 case 'r':
 
@@ -248,4 +258,19 @@ void event_handler(sf::RenderWindow& window, utente* giocatore1, utente* giocato
 			aggiungi_risorse(giocatore1, giocatore2);
 		}
 	}
+}
+
+void tasto(sf::RenderWindow& window, int a) {
+    sf::Texture pulsante;
+   pulsante.loadFromFile("./media/pulsante.png");
+    sf::Sprite pulsante_sprite(pulsante);
+    int colore = id(window);
+	if (colore == -1) {
+		return;
+	}
+    if(colore==150){
+		window.draw(pulsante_sprite);
+        if (a == 0) { window.display(); }
+    }
+
 }

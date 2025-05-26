@@ -23,6 +23,7 @@ int utente::get_risorse(int a) { return risorse[a]; }
 bool utente::piazza_insediamenti(int i, int j) {
 	if (insediamenti > 0 && iniziale > 0 && piazzamento_insediamenti(i, j)) {
 		insediamenti--;
+		punteggio++;
 		return true;
 	}
 	if (risorse[1] > 0 && risorse[2] > 0 && risorse[3] > 0 && risorse[5] > 0 && piazzamento_insediamenti(i, j)) {
@@ -30,6 +31,7 @@ bool utente::piazza_insediamenti(int i, int j) {
 		risorse[2]--;
 		risorse[3]--;
 		risorse[5]--;
+		punteggio++;
 		return true;
 	}
 	else {
@@ -54,6 +56,7 @@ bool utente::piazza_citta(int i, int j) {
 		risorse[4] -= 3;
 		risorse[5] -= 2;
 		board[i][j]->set_tipo('c');
+		punteggio++;
 		return true;
 	}
 	else { return false; }
@@ -82,10 +85,18 @@ void utente::aggiungi_risorsa(int a) {
 	}
 
 	void utente::aggiunta_risorsa2(vector<int> numeri2) {
+		cout << "Aggiunta risorse" << endl;
+		stampa_numeri();
+		cout << "Numero2 ";
+		for (int i = 0; i < numeri2.size(); ++i) {
+			cout << " " << numeri_[i];
+		}
+		cout << endl;
 		int b;
 		for (int i = 0; i < numeri2.size(); i++) {
 			for (int x = 0; x < numeri_.size(); x++) {
 				if (numeri2[i] == numeri_[x]) {
+					cout << "diocane";
 					b = identifica_risorsa(numeri2[i]);
 					switch (b) {
 					case 1: // legno
@@ -162,7 +173,6 @@ void utente::aggiungi_risorsa(int a) {
 			}
 			else {x = array1[i]-1;y = 487 + i * 26;
 			}
-			cout << x << " " << y << endl;
 			text.setPosition(sf::Vector2f(x, y));
 			text.setString(std::to_string(risorse[i]));
 			window.draw(text);

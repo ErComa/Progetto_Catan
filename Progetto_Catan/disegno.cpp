@@ -9,6 +9,7 @@
 #include <ctime>  
 using namespace std;
 
+
 void overlay(sf::RenderWindow& window) {
     int a, b, vertici, lati, vertici_counter;
     a = 0;

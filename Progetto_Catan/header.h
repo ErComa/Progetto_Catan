@@ -12,6 +12,7 @@ const int colonne = 21;
 
 void inizializzazione_board();
 void inizializzazione_biomi();
+void inizializzazione_pulsante(sf::RenderWindow& window);
 void assegnazione_numeri();
 void print(sf::RenderWindow& window, utente* giocatore1, utente* giocatore2);
 int id(sf::RenderWindow& window);
@@ -19,6 +20,7 @@ void overlay(sf::RenderWindow& window);
 void print_vertici(sf::RenderWindow& window);
 void event_handler(sf::RenderWindow& window,utente* giocatore1,utente* giocatore2);
 void print_numeri(sf::RenderWindow& window);
+void tasto(sf::RenderWindow & window, int);
 
 extern char griglia[righe][colonne];
 extern int colori[19];

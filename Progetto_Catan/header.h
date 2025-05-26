@@ -4,6 +4,7 @@
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
 #include "utente.h"
+#include <string>
 
 //classi per la board
 const int righe = 11;
@@ -12,7 +13,7 @@ const int colonne = 21;
 void inizializzazione_board();
 void inizializzazione_biomi();
 void assegnazione_numeri();
-void print(sf::RenderWindow& window);
+void print(sf::RenderWindow& window, utente* giocatore1, utente* giocatore2);
 int id(sf::RenderWindow& window);
 void overlay(sf::RenderWindow& window);
 void print_vertici(sf::RenderWindow& window);

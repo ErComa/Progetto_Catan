@@ -18,6 +18,9 @@ int main()
     iniziale = 6;
     turno = 'r';
     placing = 0;
+    oldx = 0;
+    oldy = 0;
+    current_ladro = 0;
 	utente* giocatore1 = new utente();
 	utente* giocatore2 = new utente();
     assegnazione_numeri();

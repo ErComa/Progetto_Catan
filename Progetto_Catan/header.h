@@ -26,6 +26,7 @@ extern int griglia_biomi[5][10];
 extern char turno;
 extern int stato_turno;
 extern int iniziale;
+extern bool placing;
 
 class coso {
 protected:

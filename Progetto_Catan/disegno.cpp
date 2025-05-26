@@ -14,7 +14,7 @@ void overlay(sf::RenderWindow& window) {
     int a, b, vertici, lati, vertici_counter;
     a = 0;
     b = 0;
-    // Caricamento delle texture
+    // Caricamento del prep
     sf::Texture blu_giu_texture;
     blu_giu_texture.loadFromFile("./media/blu_giu.png");
     sf::Texture blu_su_texture;
@@ -261,6 +261,9 @@ void print_numeri(sf::RenderWindow& window) {
     sf::Texture dodici_texture;
     dodici_texture.loadFromFile("./media/12.png");
     sf::Sprite dodici_sprite(dodici_texture);
+    sf::Texture ladro_texture;
+    ladro_texture.loadFromFile("./media/ladro.png");
+    sf::Sprite ladro_sprite(ladro_texture);
 
 
 
@@ -273,59 +276,65 @@ void print_numeri(sf::RenderWindow& window) {
                 if (i == 0 || i == 4) { x = 235 + (counter * 140); }//260
                 if (i == 1 || i == 3) { x = 165 + (counter * 140); }//180
                 if (i == 2) { x = 95 + (counter * 140); }
-                cout << counter <<" x: "<<x<< endl;
 				y = 150 + (i * 121);
 				a = mappa[i][j]->get_numero();
-                switch (a) {
-				case 2:
-					due_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(due_sprite);
-					break;
-				case 3:
-					tre_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(tre_sprite);
-					break;
-				case 4:
-					quattro_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(quattro_sprite);
-					break;
-				case 5:
-					cinque_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(cinque_sprite);
-					break;
-				case 6:
-					sei_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(sei_sprite);
-					break;
-				case 8:
-					otto_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(otto_sprite);
-					break;
-				case 9:
-					nove_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(nove_sprite);
-					break;
-				case 10:
-					dieci_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(dieci_sprite);
-					break;
-				case 11:
-					undici_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(undici_sprite);
-					break;
-				case 12:
-					dodici_sprite.setPosition(sf::Vector2f(x, y));
-					window.draw(dodici_sprite);
-					break;
+                if (!mappa[i][j]->get_ladro()) {
+                    
+                    switch (a) {
+                    case 2:
+                        due_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(due_sprite);
+                        break;
+                    case 3:
+                        tre_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(tre_sprite);
+                        break;
+                    case 4:
+                        quattro_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(quattro_sprite);
+                        break;
+                    case 5:
+                        cinque_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(cinque_sprite);
+                        break;
+                    case 6:
+                        sei_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(sei_sprite);
+                        break;
+                    case 8:
+                        otto_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(otto_sprite);
+                        break;
+                    case 9:
+                        nove_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(nove_sprite);
+                        break;
+                    case 10:
+                        dieci_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(dieci_sprite);
+                        break;
+                    case 11:
+                        undici_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(undici_sprite);
+                        break;
+                    case 12:
+                        dodici_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(dodici_sprite);
+                        break;
+                    }
+                }
+                else {
+                    y -= 5;
+                    x -= 10;
+                    ladro_sprite.setPosition(sf::Vector2f(x, y));
+                    window.draw(ladro_sprite);
                 }
                 counter++;
 			}
            
-            }
-        cout << "fine riga " << endl;
         }
-    cout << "fine chiamata funzione";
     }
+}
 
 /*
 {-1,-1,0,-1,0,-1,0,-1,-1,-1},

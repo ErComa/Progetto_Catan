@@ -9,12 +9,15 @@ private:
 	int type;
 	int numero;
 	int colore;
+	bool ladro;
 public:
 	bioma(int, int, int);
 	int get_type();
 	int Tiro_dadi();
 	int get_colore() { return colore; }
 	int get_numero() { return numero; }
+	bool get_ladro() { return ladro; }
+	void set_ladro(bool a) { ladro = a; }
 };
 
 extern bioma* mappa[5][10];

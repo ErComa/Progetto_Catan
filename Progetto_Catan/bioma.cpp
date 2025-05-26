@@ -8,7 +8,7 @@
 #include "bioma.h"
 using namespace std;
 
-bioma::bioma(int a, int b, int c) : type(a), numero(b), colore(c) {}
+bioma::bioma(int a, int b, int c) : type(a), numero(b), colore(c), ladro(false) {}
 int bioma::get_type() { return type; }
 int bioma::Tiro_dadi() {
 	int a = 0;

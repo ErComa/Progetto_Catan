@@ -17,6 +17,7 @@ int main()
     stato_turno = 0;
     iniziale = 6;
     turno = 'r';
+    placing = 0;
 	utente* giocatore1 = new utente();
 	utente* giocatore2 = new utente();
     assegnazione_numeri();
@@ -55,7 +56,7 @@ int main()
             {
                
                     event_handler(window, giocatore1, giocatore2);
-                    giocatore1->stampa_numeri();
+                   // giocatore1->stampa_numeri();
                     //giocatore1->stampa_risorse();
 				
             }

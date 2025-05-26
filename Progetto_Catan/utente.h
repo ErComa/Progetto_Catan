@@ -4,6 +4,7 @@
 #include "SFML\Window.hpp"
 #include "SFML\System.hpp"
 #include <vector>
+#include <string>
 
 bool piazzamento_insediamenti(int i, int j);
 bool piazzamento_strade(int i, int j);
@@ -14,6 +15,7 @@ private:
 	int citta;
 	int strade;
 	int risorse[6];
+	int punteggio;
 	std::vector<int> numeri_;
 public:
 	utente();
@@ -28,5 +30,8 @@ public:
 	void aggiungi_numero(int);
 	void aggiunta_risorsa2(std::vector<int>);
 	void stampa_risorse();
+	void aggiungi_punteggio(int a) { punteggio += a; }
+    void stampa_punteggio(sf::RenderWindow& window, int);
+	void stampa_risorse_utente(sf::RenderWindow& window, int);
 	void stampa_numeri();
 };

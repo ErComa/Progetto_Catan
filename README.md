@@ -36,7 +36,7 @@ costruendo, commerciando e usando carte sviluppo.
  <li>Il ladro: pedina speciale</li>
  </ul>
 <h2>TURNO DI GIOCO:</h2>
-<p>Ogni turno si divide in 3 fasi:</p>
+<p>Ogni turno si divide in 2 fasi:</p>
 <ol>
 <li>
 <strong>Tiro dei dadi (2 dadi)</strong>

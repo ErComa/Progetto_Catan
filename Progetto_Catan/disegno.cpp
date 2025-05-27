@@ -276,10 +276,10 @@ void print_numeri(sf::RenderWindow& window) {
                 if (i == 0 || i == 4) { x = 235 + (counter * 140); }//260
                 if (i == 1 || i == 3) { x = 165 + (counter * 140); }//180
                 if (i == 2) { x = 95 + (counter * 140); }
-				y = 150 + (i * 121);
-				a = mappa[i][j]->get_numero();
-                if (!mappa[i][j]->get_ladro()) {
-                    
+                y = 150 + (i * 121);
+                a = mappa[i][j]->get_numero();
+                if (!mappa[i][j]->get_ladro() && mappa[i][j]->get_type() != 6) {
+
                     switch (a) {
                     case 2:
                         due_sprite.setPosition(sf::Vector2f(x, y));
@@ -324,13 +324,16 @@ void print_numeri(sf::RenderWindow& window) {
                     }
                 }
                 else {
-                    y -= 5;
-                    x -= 10;
-                    ladro_sprite.setPosition(sf::Vector2f(x, y));
-                    window.draw(ladro_sprite);
+                    if (mappa[i][j]->get_ladro()) {
+                        y -= 5;
+                        x -= 10;
+                        ladro_sprite.setPosition(sf::Vector2f(x, y));
+                        window.draw(ladro_sprite);
+                    }
                 }
-                counter++;
-			}
+                    counter++;
+                }
+            
            
         }
     }

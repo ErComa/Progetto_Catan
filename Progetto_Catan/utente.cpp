@@ -11,7 +11,7 @@ utente::utente() {
 	strade = 2;
 	punteggio = 0;
 	for (int i = 0; i < 6; ++i) {
-		risorse[i] = 10;
+		risorse[i] = 200;
 	}
 }
 int utente::get_insediamenti() { return insediamenti; }
@@ -74,7 +74,6 @@ void utente::aggiungi_risorsa(int a) {
 		if (!trovato) { numeri_.push_back(a); }
 	}
 	int identifica_risorsa(int a) {
-		cout << "identificazione risorsa " << endl;
 		for (int i = 0; i < 19; ++i) {
 			if (a == colori[i]) {
 				return tipo[i];

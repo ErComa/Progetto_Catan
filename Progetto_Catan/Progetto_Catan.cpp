@@ -53,6 +53,6 @@ int main()
        
         window.clear();
         print(window, giocatore1, giocatore2);
-		tasto(window, 0);
+		//tasto(window, 0);
     }
 }
